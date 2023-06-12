@@ -7,7 +7,7 @@ hola
 ?>
 <html lang="en"> 
 <body>
-    <title>Hola</title>}
-
+    <title>Chau</title>
+    <h1>Hola </h1>
 </body>
 </html>
