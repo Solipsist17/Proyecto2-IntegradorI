@@ -1,13 +1,15 @@
 <?php 
 
-echo "Iniciando proyecto";
+require_once "libs/app.php"; // Traemos la clase
 
-hola 
+$app = new App();
 
 ?>
-<html lang="en"> 
+
+
+<!-- <html lang="en"> 
 <body>
-    <title>Chau</title>
+    <title>Polotex</title>
     <h1>Hola </h1>
 </body>
-</html>
+</html> -->
