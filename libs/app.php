@@ -1,16 +1,23 @@
 <?php 
-require_once "controllers/error.php"; // Para manejar errores en caso existan
- 
+require_once "controllers/errores.php"; // Para manejar errores en caso existan
+  
 class App {
 
     /* Clase que va a centralizar todo, como un main */
     function __construct() {
-        echo "<p>Nueva App</p>";
+        //echo "<p>Nueva App</p>";
 
         // Tratamiento de la url: http://localhost:8080/php-mvc/controller/method
-        $url = $_GET['url']; 
+        $url = isset($_GET['url']) ? $_GET['url'] : null ; 
         $url = rtrim($url, '/'); // quitamos las '/' del final de la cadena $url, en caso existan
         $url = explode('/', $url); // crea un array donde divide la cadena usando como delimitador '/'
+
+        if (empty($url[0])) { // si la url está vacía mandamos a main
+            $archivoController = 'controllers/main.php';
+            require_once $archivoController;
+            $controller = new Main();
+            return false; // salimos de este método
+        } 
 
         // modificamos la url escrita por el usuario
         $archivoController = 'controllers/' . $url[0] . '.php';
@@ -28,7 +35,7 @@ class App {
             } 
 
         } else {
-            $controller = new ErrorController();
+            $controller = new Errores();
         } 
     }
 }
