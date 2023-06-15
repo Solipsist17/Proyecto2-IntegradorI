@@ -6,7 +6,7 @@ class Errores extends Controller {
         parent::__construct();
         $this->view->mensaje = "Error en la solicitud o no existe la página";
         $this->view->prueba = "mensaje de prueba"; 
-        $this->view->render('errores/index');
+        $this->view->render('errores/index'); 
         //echo "<p>Error al cargar recurso</p>";
     }
 }
