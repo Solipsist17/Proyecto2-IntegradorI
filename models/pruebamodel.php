@@ -7,10 +7,17 @@ class PruebaModel extends Model{
     }
 
     // Operaciones con los datos
-    public function insert() {
+    public function insert($datos) {
         // insertar datos en la bd
-        echo "insertar datos";
-        //$this->db->connect();
+        try {
+            $query = $this->db->connect()->prepare("INSERT INTO alumnos(matricula, nombre, apellido) VALUES(:matricula, :nombre, :apellido)");
+            $query->execute(['matricula' => $datos['matricula'], 'nombre' => $datos['nombre'], 'apellido' => $datos['apellido']]);
+            return true;
+        } catch(PDOException $e) {
+            //echo $e->getMessage();
+            echo "Ya existe esa matrícula";
+            return false;
+        }
     }
 
     public function update() {
