@@ -15,9 +15,9 @@ class PruebaModel extends Model{
             return true;
         } catch(PDOException $e) {
             //echo $e->getMessage();
-            echo "Ya existe esa matrícula";
+            //echo "Ya existe esa matrícula";
             return false;
-        }
+        } 
     }
 
     public function update() {

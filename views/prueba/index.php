@@ -9,16 +9,9 @@
 <body>
     <?php require "views/header.php"; ?>
 
-    <?php session_start(); ?> <!-- Comenzamos la sesión -->
-
     <h1>Prueba</h1>
 
-    <div style="background-color: green;">
-        <?php if(isset($_SESSION["message"])) { ?> <!-- Validamos si existe el mensaje guardado -->
-                    <?= $_SESSION["message"] ?> <!-- Imprimimos el mensaje en caso exista -->
-        <?php session_unset(); }?>
-    </div>
-
+    <div style="background-color: orange;"><?= $this->mensaje; ?></div>
     
     <form action="<?php echo constant('URL'); ?>prueba/registrarAlumno" method="POST">
         <label for="matricula">Matricula</label><br>

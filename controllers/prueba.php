@@ -5,8 +5,12 @@ class Prueba extends Controller {
     function __construct() {
         parent::__construct();
          
-        $this->view->render('prueba/index');
+        $this->view->mensaje = "";
         //echo "<p>Error al cargar recurso</p>";
+    }
+
+    function render() {
+        $this->view->render('prueba/index');
     }
 
     function registrarAlumno() {
@@ -15,13 +19,17 @@ class Prueba extends Controller {
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
 
-        if($this->model->insert(["matricula" => $matricula, "nombre" => $nombre, "apellido" => $apellido])) {
-            //echo "Nuevo alumno creado";
+        $mensaje = "";
 
-            // ARREGLAR ESTO (MOSTRAR MENSAJE EN LA MISMA PÁGINA)
-            $_SESSION["message"] = "Alumno creado satisfactoriamente";
-            header("Location: ".constant('URL')."prueba/prueba/registrarAlumno"); // Redireccionamos para mostrar el mensaje
+        if($this->model->insert(["matricula" => $matricula, "nombre" => $nombre, "apellido" => $apellido])) {
+            $mensaje = "Nuevo alumno creado";
+        } else {
+            $mensaje = "La matrícula ya existe";
         }
+
+        $this->view->mensaje = $mensaje; // Asignamos el mensaje al objeto de la vista
+
+        $this->render();
     }
 
     function actualizarAlumno() {
