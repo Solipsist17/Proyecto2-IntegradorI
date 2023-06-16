@@ -16,6 +16,8 @@ class App {
             $archivoController = 'controllers/main.php';
             require_once $archivoController;
             $controller = new Main();
+            $controller->loadModel('main');
+
             return false; // salimos de este método
         } 
 
@@ -26,6 +28,7 @@ class App {
         if (file_exists($archivoController)) { 
             require_once $archivoController; 
             $controller = new $url[0]; // creamos una instancia de ese objeto
+            $controller->loadModel($url[0]); // cargamos el modelo
 
             if (isset($url[1])) { // Validamos el valor dentro del array
                 $methodName = $url[1];
