@@ -1,0 +1,135 @@
+*,
+*::before
+*::after{
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+/*CONFIGURACIÓN GENERAL*/
+body {
+	font-family: sans-serif;
+	box-sizing: border-box;
+	min-height: 100vh;
+	background: black;
+}
+
+/*ESTILO DEL HEADER*/
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: rgba(255, 255, 255, 0.20);
+	padding: 0 5%;
+	display: flex;
+	align-items: stretch;
+	justify-content: space-between;
+	z-index: 1000;
+}
+
+/*ESTILO DEL LOGO DEL MENU*/
+.logo {
+
+	font-size: 40px;
+	text-transform: uppercase;
+	color: white;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+
+}
+
+
+/*ESTILO DE LA PRIMERA UL */
+.navigation ul{
+	list-style: none;
+}
+
+/*LOGO*/
+
+img {
+
+	max-width:100px;
+ 	max-height:100px;
+ 	display: flex;
+
+
+
+}
+
+
+.header .navigation ul {
+	padding-block: 2px;
+}
+
+
+/*ESTILO DE LA PRIMERA LI */
+.header .navigation ul li {
+	float: left;
+	position:relative;
+}
+
+/*ESTILO DE LOS ELEMENTOS ANCLA (a) */
+.header .navigation ul li a {
+	font-size: 20px;
+	color: white;
+	text-decoration: none;
+	padding: 20px;
+	display: block;
+	transition: all .2s ease;
+}
+
+/*ESTILO REACTIVO AL a */
+.header .navigation ul li a:hover{
+
+	background-color: blueviolet;
+}
+
+.header .navigation ul li ul {
+	position: absolute;
+	right: 0;
+	width: 300px;
+	background-color: mediumpurple;
+	display: none;
+}
+
+.header .navigation ul li ul li a {
+	font-size: 15px;
+	text-transform: capitalize;
+
+}
+
+.header .navigation ul li ul li ul {
+	position: absolute;
+	top: 0;
+	right: 300px;
+}
+
+.header .navigation ul li ul li {
+	width: 100%;
+}
+
+.header .navigation ul li:hover > ul {
+	display: initial;
+}
+
+.header .navigation ul li ul li span{
+	float: right;
+	color: white;
+	background-color: red;
+	padding: 5px 10px;
+	font-size: 12px;
+	text-align: center;
+	border-radius: 5px;
+}
+
+
+
+#toggle,
+
+.header label {
+	display: none;
+	cursor: pointer;
+}
+
