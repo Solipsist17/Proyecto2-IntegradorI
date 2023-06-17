@@ -58,17 +58,27 @@ class Consulta extends Controller {
     function eliminarAlumno($param = null) {
         $matricula = $param[0];
 
-        if ($this->model->delete($matricula)) {
+        if ($this->model->delete($matricula)) { // Eliminar con el href
             // actualizar alumno exito
-            $this->view->mensaje = "Alumno eliminado correctamente";
-            echo "true";
+            //$this->view->mensaje = "Alumno eliminado correctamente";
+            $mensaje = "Alumno eliminado correctamente";
         } else {
             // mensaje de error
-            $this->view->mensaje = "No se pudo eliminar el alumno";
-            echo "false";
+            //$this->view->mensaje = "No se pudo eliminar el alumno";
+            $mensaje = "No se pudo eliminar el alumno";
         }
 
-        $this->render(); // Redirigimos al index
+        //$this->render(); // Redirigimos al index
+
+        /* $data = [
+            'data' => $matricula
+        ]; */
+
+        echo $mensaje;
+        //header('Content-Type: application/json');
+
+        //echo json_encode($data);
+        exit(); // Termina el script para no enviar nada más adicional
     }
 
     
