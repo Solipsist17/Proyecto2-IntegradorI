@@ -34,7 +34,28 @@ class App {
             $controller = new $url[0]; 
             $controller->loadModel($url[0]); // cargamos el modelo
 
-            if (isset($url[1])) { // Si hay un método que requiere cargar
+            // número de elementos del arreglo
+            $nparam = sizeof($url);
+
+            if ($nparam > 1) { // Si hay al menos un método que requiere cargar
+                if ($nparam > 2) { // Si tiene parámetros
+                    $param = [];
+                    for ($i=2; $i<$nparam; $i++) {
+                        array_push($param, $url[$i]);
+                    }
+                    $controller->{$url[1]}($param); // enviamos los parámetros al método
+                } else { // Sino solo validamos el método
+                    //$methodName = $url[1];
+                    //if (method_exists($controller, $methodName)) { // Si el método existe en el objeto
+                        $controller->{$url[1]}(); // traemos el método de ese objeto
+                        // La vista se muestra dentro del método después de las validaciones 
+                    //}
+                }
+            } else { /////
+                $controller->render(); // si no hay un método simplemente mostramos la vista
+            }
+
+            /* if (isset($url[1])) { // Si hay un método que requiere cargar
                 $methodName = $url[1];
                 if (method_exists($controller, $methodName)) { // Si el método existe en el objeto
                     $controller->{$url[1]}(); // traemos el método de ese objeto
@@ -42,7 +63,7 @@ class App {
                 }
             } else {
                 $controller->render(); // si no hay un método simplemente mostramos la vista
-            }
+            } */
 
         } else {
             $controller = new Errores();

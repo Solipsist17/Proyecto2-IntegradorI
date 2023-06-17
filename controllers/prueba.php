@@ -32,10 +32,10 @@ class Prueba extends Controller {
         $this->render();
     }
 
-    function actualizarAlumno() {
+    /* function actualizarAlumno() {
         echo "Alumno actualizado";
         $this->model->update();
-    }
+    } */
 }
 
 ?>
