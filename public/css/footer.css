@@ -10,14 +10,12 @@ footer {
 }
 
 .footer{
-<<<<<<< HEAD:views/footer.css
 	width: 100%;
 	background: black;
 	color:white;
-=======
-	position: fixed;
-  	bottom: 0;
->>>>>>> feb1c0a56dcc5fc8ddb2e33cd71c49fc92e5085f:public/css/footer.css
+
+	/* position: fixed;
+  	bottom: 0; */
 
 	width: 100%;
 	background-color: #000000;

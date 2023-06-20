@@ -16,33 +16,41 @@
     <div class="login-box">
       <img src="<?= constant('URL') ?>public/img/Logo.png" class="avatar" alt="Avatar Image">
       <h1>Registrate</h1>
-      <form>
+
+      
+      <form action="<?php echo constant('URL'); ?>usuario/registrarUsuario" method="POST">
 
         <!--  -->
 
-        <label for="username">Nombres</label>
-        <input type="text" placeholder="Ingrese el Nombre">
+        <label for="nombre">Nombres</label>
+        <input id="nombre" name="nombre" type="text" placeholder="Ingrese el Nombre" required>
 
         <!--  -->
 
-        <label for="username">Apellidos</label>
-        <input type="text" placeholder="Ingrese los Apellidos">
+        <label for="apellido">Apellidos</label>
+        <input id="apellido" name="apellido" type="text" placeholder="Ingrese los Apellidos" required>
 
         <!--  -->
 
-        <label for="username">Correo</label>
-        <input type="text" placeholder="Ingrese su correo">
+        <label for="correo">Correo</label>
+        <input id="correo" name="correo" type="text" placeholder="Ingrese su correo" required>
+
+        <label for="username">username</label>
+        <input id="username" name="username" type="text" placeholder="Ingrese el Nombre" required>
 
         <!--  -->
         <label for="password">Password</label>
-        <input type="password" placeholder="Enter Password">
+        <input id="password" name="password" type="password" placeholder="Enter Password" required>
+
         <input type="submit" value="Registrar">
 
       </form>
 
     </div>
 
-     <?php require "views/footer.php"; ?>
+    <?= $this->mensaje ?>
+
+     <!-- <?php require "views/footer.php"; ?> -->
 
   </body>
 
