@@ -1,6 +1,7 @@
-*,
+/* *,
 *::before
-*::after{
+*::after */
+header {
 	margin: 0;
 	padding: 0;
 	box-sizing: inherit;
@@ -11,16 +12,17 @@ body {
 	font-family: sans-serif;
 	box-sizing: border-box;
 	min-height: 100vh;
-	background: black;
+	background: white;
 }
 
 /*ESTILO DEL HEADER*/
 .header {
-	position: fixed;
+	position: relative /* fixed */;
 	top: 0;
 	left: 0;
 	right: 0;
 	background: rgba(255, 255, 255, 0.20);
+	background-color: #000000;
 	padding: 0 5%;
 	display: flex;
 	align-items: stretch;
@@ -49,13 +51,9 @@ body {
 /*LOGO*/
 
 img {
-
 	max-width:100px;
  	max-height:100px;
  	display: flex;
-
-
-
 }
 
 

@@ -7,6 +7,7 @@ class Producto extends Controller {
          
         //$this->view->render('producto/index');
         //echo "<p>Error al cargar recurso</p>";
+        $this->view->mensaje = "Mensaje desde el controlador de producto";
     }
 
     function render() {

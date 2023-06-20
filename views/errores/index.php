@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo constant('URL')?>public/css/default.css">
+    <link rel="stylesheet" href="<?= constant('URL') ?>public/css/header.css">
+    <link rel="stylesheet" href="<?= constant('URL') ?>public/css/footer.css">
     <title>Error</title>
 </head>
 <body>

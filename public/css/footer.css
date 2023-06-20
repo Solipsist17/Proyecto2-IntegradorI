@@ -1,16 +1,21 @@
 
-*{
+footer {
+	position: relative;
+	height: fit-content;
+	top: 60%;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	font-family: sans-serif;
 }
 
-
-
 .footer{
-	width: 100%;
+	position: fixed;
+  	bottom: 0;
 
+	width: 100%;
+	background-color: #000000;
+	color: white;
 }
 
 .footer .group-1 {
