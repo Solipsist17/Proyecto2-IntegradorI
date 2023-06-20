@@ -1,0 +1,14 @@
+.slider-container {
+    width: 1366px;
+    height: 768px;
+    overflow: hidden;
+    position: cover;
+    border: 1px solid #ccc;
+}
+
+.slider-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}

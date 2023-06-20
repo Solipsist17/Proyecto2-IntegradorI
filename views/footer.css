@@ -10,29 +10,51 @@
 
 .footer{
 	width: 100%;
+	background: black;
+	color:white;
 
 }
 
 .footer .group-1 {
 	width: 50%;
-	max-width: 1200px;
+	max-width: 100%;
 	margin: auto;
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(4, 1fr);
 	grid-gap: 50px;
-	padding: 45px 0px;
+	padding: 40px 0px;
+}
+
+.footer .group-1 .box {
+
+margin-top: 20px;
+height:250px ;
+width: 300px;
 
 }
+
 
 .footer .group-1 .box figure{
 	width: 10px;
-	height: 10px;
-	display: flex;
+	height: 20px;
+	display:block;
 	justify-content: center;
-	align-items: center;
+	
 }
 
-.footer .group_1 .box figure img{
-	width: 50px;
-	height: 50px;
+.footer .group-1 .box img {
+	height: 300px;
+	width: 300px;
+	margin-top: -40px;
+}
+
+
+.footer .group-1 .box h2 {
+	padding: 5px;
+	margin-top: 30px;
+}
+
+.footer .group-1 .box p{
+	padding: 6px;
+
 }
