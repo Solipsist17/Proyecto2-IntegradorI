@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo constant('URL')?>public/css/default.css">
-    <title>Main</title>
+    <link rel="stylesheet" href="<?= constant('URL') ?>public/css/header.css">
+    <link rel="stylesheet" href="<?= constant('URL') ?>public/css/footer.css">
+    <title>Inicio</title>
 </head>
 <body>
     <?php require "views/header.php"; ?>
 
-    <h1>Esta es la vista de main</h1>
+    <h1>Esta es la vista de inicio</h1>
     <p><?php echo $this->mensaje ?></p>
     
 

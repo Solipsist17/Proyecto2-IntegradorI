@@ -6,8 +6,12 @@ class Main extends Controller{
         parent::__construct(); // llamamos al constructor de Controller
 
         $this->view->mensaje = "mensaje desde controlador main";
-        $this->view->render('main/index');
+        //$this->view->render('main/index'); 
         //echo "<p>Nuevo controlador Main</p>";
+    }
+
+    function render() {
+        $this->view->render('main/index');
     }
 
     function saludo() {
