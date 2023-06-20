@@ -14,7 +14,7 @@
 				<li><span><a href="<?php echo constant('URL')?>producto">Catálogo</a></span></li>
 				<li><span><a href="<?php echo constant('URL')?>contacto">Contáctenos</a></span></li>
 				<li><span><a href="<?php echo constant('URL')?>pedido">Mis pedidos</a></span></li>
-				<li><span><a href="<?php echo constant('URL')?>cuenta">Mi cuenta</a></span></li>
+				<li><span><a href="<?php echo constant('URL')?>login">Mi cuenta</a></span></li>
 
 
 

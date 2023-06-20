@@ -3,12 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>Login Polotex</title>
-    <link rel="stylesheet" href="estilo_registro.css">
+     <link rel="stylesheet" href="<?php echo constant('URL')?>public/css/default.css">
+    <link rel="stylesheet" href="<?= constant('URL') ?>public/css/header.css">
+    <link rel="stylesheet" href="<?= constant('URL') ?>public/css/footer.css">
+    <link rel="stylesheet" href="<?= constant('URL') ?>public/css/estilo_login.css">
+    <link rel="stylesheet" href="<?= constant('URL') ?>public/css/estilo_registro.css">
+
   </head>
   <body>
+    <?php require "views/header.php"; ?>
 
     <div class="login-box">
-      <img src="Lib_Img/Logo.png" class="avatar" alt="Avatar Image">
+      <img src="<?= constant('URL') ?>public/img/Logo.png" class="avatar" alt="Avatar Image">
       <h1>Registrate</h1>
       <form>
 
@@ -33,7 +39,10 @@
         <input type="submit" value="Registrar">
 
       </form>
+
     </div>
+
+     <?php require "views/footer.php"; ?>
 
   </body>
 
