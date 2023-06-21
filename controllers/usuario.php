@@ -1,34 +1,30 @@
 <?php 
- 
-class Registro extends Controller{
-     
-    function __construct() {
-        parent::__construct(); // llamamos al constructor de Controller
 
+class Usuario extends Controller {
+
+    function __construct() {
+        parent::__construct();
+         
         $this->view->mensaje = "";
-        //$this->view->render('main/index'); 
-        //echo "<p>Nuevo controlador Main</p>";
-    } 
+        //echo "<p>Error al cargar recurso</p>";
+    }
 
     function render() {
         $this->view->render('registro/index');
     }
 
-    function saludo() {
-        echo "<p>Ejecutaste el método saludo</p>";
-    }
-
-    /* function registrarUsuario() {
+    function registrarUsuario() {
         //session_start(); ////////
         $username = $_POST['username'];
         $password = $_POST['password'];
         $correo = $_POST['correo'];
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
+        $idRol =  2 /* $_POST['idRol'] */;
 
         $mensaje = "";
 
-        if($this->model->registrar(["username" => $username, "password" => $password, "correo" => $correo, "nombre" => $nombre, "apellido" => $apellido])) {
+        if($this->model->registrar(["username" => $username, "password" => $password, "correo" => $correo, "nombre" => $nombre, "apellido" => $apellido, "idRol" => $idRol])) {
             $mensaje = "Nuevo usuario creado";
         } else {
             $mensaje = "Error o ya existe";
@@ -37,8 +33,12 @@ class Registro extends Controller{
         $this->view->mensaje = $mensaje; // Asignamos el mensaje al objeto de la vista
 
         $this->render();
-    } */
+    }
 
+    /* function actualizarAlumno() {
+        echo "Alumno actualizado";
+        $this->model->update();
+    } */
 }
 
 ?>
