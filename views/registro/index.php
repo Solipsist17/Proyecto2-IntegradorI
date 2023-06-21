@@ -6,7 +6,7 @@
      <link rel="stylesheet" href="<?php echo constant('URL')?>public/css/default.css">
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/header.css">
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/footer.css">
-    <link rel="stylesheet" href="<?= constant('URL') ?>public/css/estilo_registro.css">
+    <!-- <link rel="stylesheet" href="<?= constant('URL') ?>public/css/estilo_registro.css"> -->
 
   </head>
   <body>
@@ -43,22 +43,16 @@
 
         <input type="submit" value="Registrar">
 
+        <a href="<?= constant('URL') ?>login">¿Ya tienes una cuenta?</a>
+
       </form>
 
     </div>
-<<<<<<< HEAD
-=======
 
     <?= $this->mensaje ?>
 
-     <!-- <?php require "views/footer.php"; ?> -->
+     <?php require "views/footer.php"; ?>
 
->>>>>>> 30238f025bb3146d33e894d08e63e2f9415d0942
   </body>
-
-   <?php require "views/footer.php"; ?>
-
-
-
 
 </html>

@@ -1,5 +1,7 @@
 <?php 
 
+include_once 'models/rolmodel.php'; // traemos la clase Rol
+
 class UsuarioModel extends Model {
 
     public $idUsuario;
@@ -33,6 +35,36 @@ class UsuarioModel extends Model {
             //echo $e->getMessage();
             return false;
         } 
+    }
+
+    public function autenticar($datos) {
+
+        $item = new UsuarioModel();
+
+        $query = $this->db->connect()->prepare("SELECT * FROM usuario WHERE username = :username AND password = :password");
+        try {
+            $query->execute([
+                'username' => $datos['username'],
+                'password' => $datos['password'],
+            ]);
+
+            while ($row = $query->fetch()) {
+                $item->idUsuario = $row['idUsuario'];
+                $item->rol = new RolModel();
+                $item->rol->idRol = $row['idRol'];
+                /* $item->nombre = $row['nombre'];
+                $item->apellido = $row['apellido']; */
+            }
+
+            if ($item->idUsuario !== null) { // si se encontraron valores
+                return $item;
+            } else {
+                return null; // 
+            }
+
+        } catch(PDOException $e) {
+            return null;
+        }
     }
 
     public function modificar($item) {

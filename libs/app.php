@@ -1,6 +1,8 @@
 <?php 
 require_once "controllers/errores.php"; // Para manejar errores en caso existan
-  
+
+session_start(); // 
+
 class App {
 
     /* Clase que va a centralizar todo, como un main */

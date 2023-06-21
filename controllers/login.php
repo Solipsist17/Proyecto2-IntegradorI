@@ -5,7 +5,7 @@ class Login extends Controller{
     function __construct() {
         parent::__construct(); // llamamos al constructor de Controller
 
-        $this->view->mensaje = "mensaje desde controlador main";
+        $this->view->mensaje = "";
         //$this->view->render('main/index'); 
         //echo "<p>Nuevo controlador Main</p>";
     }
