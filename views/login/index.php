@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo constant('URL')?>public/css/default.css">
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/header.css">
-    <link rel="stylesheet" href="<?= constant('URL') ?>public/css/estilo_registro.css">
+    <link rel="stylesheet" href="<?= constant('URL') ?>public/css/estilo_login.css">
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/footer.css">
     
     <title>Login</title>
@@ -13,7 +13,7 @@
 <body>
     <?php require "views/header.php"; ?>
     <div class="login-box">
-      <img src="Lib_Img/Logo.png" class="avatar" alt="Avatar Image">
+      <img src="public/img/Logo.png" class="avatar" alt="Avatar Image">
       <h1>POLOTEX</h1>
       <form>
 
@@ -32,6 +32,7 @@
 
       </form>
     </div>
+    
     <?php require "views/footer.php"; ?>
 
 </body>

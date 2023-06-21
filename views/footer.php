@@ -1,3 +1,5 @@
+
+<body>
 <footer class="footer">
 		<div class="group-1">
 			<div class="box">
@@ -27,7 +29,5 @@
 			</div>
 
 		</div>
-
-
-
 	</footer>
+</body>

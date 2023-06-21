@@ -1,4 +1,7 @@
+<link rel="stylesheet" type="text/css" href="public/css/header.css">
+
 <header class="header">
+
 
 		<div class="logo"><div><img src="<?php echo constant('URL')?>public/img/Logo.png" id="Peg"></div>POLOTEX</div>
 

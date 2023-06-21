@@ -1,8 +1,7 @@
 
-footer {
+body {
 	position: relative;
 	height: fit-content;
-	top: 60%;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -22,6 +21,7 @@ footer {
 	width: 100%;
 	background-color: #000000;
 	color: white;
+	margin-top: 60px;
 }
 
 .footer .group-1 {
@@ -32,6 +32,7 @@ footer {
 	grid-template-columns: repeat(4, 1fr);
 	grid-gap: 50px;
 	padding: 40px 0px;
+	justify-content: center;
 }
 
 .footer .group-1 .box {
@@ -52,9 +53,10 @@ width: 300px;
 }
 
 .footer .group-1 .box img {
-	height: 300px;
-	width: 300px;
-	margin-top: -40px;
+	height: 500px;
+	width: 500px;
+	margin-top: 40px;
+
 }
 
 

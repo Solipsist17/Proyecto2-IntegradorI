@@ -6,7 +6,6 @@
      <link rel="stylesheet" href="<?php echo constant('URL')?>public/css/default.css">
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/header.css">
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/footer.css">
-    <link rel="stylesheet" href="<?= constant('URL') ?>public/css/estilo_login.css">
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/estilo_registro.css">
 
   </head>
@@ -41,10 +40,9 @@
       </form>
 
     </div>
-
-     <?php require "views/footer.php"; ?>
-
   </body>
+
+   <?php require "views/footer.php"; ?>
 
 
 

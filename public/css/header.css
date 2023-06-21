@@ -42,11 +42,14 @@ body {
 
 }
 
+.header .navigation ul {
+    padding-block: 20px;
+    list-style: none;
+
+}
 
 /*ESTILO DE LA PRIMERA UL */
-.navigation ul{
-	list-style: none;
-}
+
 
 /*LOGO*/
 
@@ -56,11 +59,9 @@ img {
  	display: flex;
 }
 
-
-.header .navigation ul {
-	padding-block: 2px;
+.header .navigation span{
+	margin-top: 10px;
 }
-
 
 /*ESTILO DE LA PRIMERA LI */
 .header .navigation ul li {
