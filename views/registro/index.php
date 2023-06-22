@@ -6,11 +6,13 @@
      <link rel="stylesheet" href="<?php echo constant('URL')?>public/css/default.css">
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/header.css">
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/footer.css">
-    <!-- <link rel="stylesheet" href="<?= constant('URL') ?>public/css/estilo_registro.css"> -->
+    <link rel="stylesheet" href="<?= constant('URL') ?>public/css/estilo_registro.css">
 
   </head>
   <body>
     <?php require "views/header.php"; ?>
+
+    <br>
 
     <div class="login-box">
       <img src="<?= constant('URL') ?>public/img/Logo.png" class="avatar" alt="Avatar Image">

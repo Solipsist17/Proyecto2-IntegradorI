@@ -5,12 +5,13 @@ body {
   background: black;
   font-family: sans-serif;
   height: 100vh;
+
 }
 
 .login-box {
   width: 500px;
   height: 700px;
-  background: transparent;
+  background: black;
   border: 2px solid white;
   color: #fff;
   top: 50%;
@@ -20,6 +21,7 @@ body {
   box-sizing: border-box;
   padding: 70px 30px;
   border-radius: 20px;
+  margin-top: 20px;
 
 }
 
@@ -78,7 +80,7 @@ body {
   color: #fff;
   font-size: 18px;
   border-radius: 20px;
-  margin-top: 50px;
+  margin-top: -5px;
 
 }
 
@@ -92,9 +94,10 @@ body {
   text-decoration: none;
   font-size: 12px;
   line-height: 20px;
-  color: darkgrey;
+  color: black;
 }
 
 .login-box a:hover {
   color: #fff;
 }
+

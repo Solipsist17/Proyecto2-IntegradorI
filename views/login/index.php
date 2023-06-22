@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo constant('URL')?>public/css/default.css">
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/header.css">
-    <!-- <link rel="stylesheet" href="<?= constant('URL') ?>public/css/estilo_login.css"> -->
-    <link rel="stylesheet" href="<?= constant('URL') ?>public/css/footer.css">
+    <link rel="stylesheet" href="<?= constant('URL') ?>public/css/estilo_login.css">
+    <link rel="stylesheet" href="<?= constant('URL') ?>public/css/footer_login.css">
     
     <title>Login</title>
 </head>
