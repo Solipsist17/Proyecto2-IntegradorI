@@ -17,14 +17,9 @@
 				<li><span><a href="<?php echo constant('URL')?>producto">Catálogo</a></span></li>
 				<li><span><a href="<?php echo constant('URL')?>contacto">Contáctenos</a></span></li>
 				<li><span><a href="<?php echo constant('URL')?>pedido">Mis pedidos</a></span></li>
-				<li><span><a href="<?php echo constant('URL')?>login">Mi cuenta</a></span></li>
-
-
-
+				<li><span><a href="<?php echo constant('URL')?><?= isset($_SESSION['idUsuario']) ? "cuenta" : "login"?>">Mi cuenta</a></span></li>
 			</ul>
-
-
 
 		</nav>
 
-	</header>
+</header>

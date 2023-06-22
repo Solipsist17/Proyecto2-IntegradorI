@@ -33,7 +33,7 @@ class App {
             require_once $archivoController; 
 
             // inicializar controlador
-            $controller = new $url[0]; 
+            $controller = new $url[0];  // ¿Cargar el modelo en el constructor del controlador?
             $controller->loadModel($url[0]); // cargamos el modelo
 
             // número de elementos del arreglo
