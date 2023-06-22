@@ -10,7 +10,7 @@ body {
 
 .login-box {
   width: 500px;
-  height: 700px;
+  height: 750px;
   background: black;
   border: 2px solid white;
   color: #fff;
@@ -21,7 +21,8 @@ body {
   box-sizing: border-box;
   padding: 70px 30px;
   border-radius: 20px;
-  margin-top: 20px;
+  margin-top: 45px;
+ 
 
 }
 
@@ -76,8 +77,8 @@ body {
   border: none;
   outline: none;
   height: 40px;
-  background: black;
-  color: #fff;
+  background: #ffc107;
+  color: black;
   font-size: 18px;
   border-radius: 20px;
   margin-top: -5px;
@@ -86,7 +87,7 @@ body {
 
 .login-box input[type="submit"]:hover {
   cursor: pointer;
-  background: #ffc107;
+  background:#CD791B ;
   color: #000;
 }
 
@@ -94,10 +95,10 @@ body {
   text-decoration: none;
   font-size: 12px;
   line-height: 20px;
-  color: black;
+  color: white;
 }
 
 .login-box a:hover {
-  color: #fff;
+  color: yellow;
 }
 
