@@ -45,7 +45,7 @@ class UsuarioModel extends Model {
         try {
             $query->execute([
                 'username' => $datos['username'],
-                'password' => $datos['password'],
+                'password' => $datos['password'], 
             ]);
 
             while ($row = $query->fetch()) {
@@ -68,18 +68,23 @@ class UsuarioModel extends Model {
     }
 
     public function modificar($item) {
-        /* $query = $this->db->connect()->prepare("UPDATE alumnos SET nombre = :nombre, apellido = :apellido WHERE matricula = :matricula");
+        $query = $this->db->connect()->prepare("UPDATE usuario SET username = :username, password = :password, correo = :correo, nombre = :nombre, apellido = :apellido, dni = :dni, telefono = :telefono WHERE idUsuario = :idUsuario");
         try {
             $query->execute([
-                'matricula' => $item['matricula'],
+                'username' => $item['username'],
+                'password' => $item['password'],
+                'correo' => $item['correo'],
                 'nombre' => $item['nombre'],
-                'apellido' => $item['apellido']
+                'apellido' => $item['apellido'],
+                'dni' => $item['dni'],
+                'telefono' => $item['telefono'],
+                'idUsuario' => $item['idUsuario']
             ]);
         
             return true;
         } catch(PDOException $e) {
             return false;
-        } */
+        }
     }
 
     public function eliminar($id) {
@@ -117,22 +122,31 @@ class UsuarioModel extends Model {
     }
 
     public function consultarPorId($id) {
-        /* $item = new Alumno();
+        $item = new UsuarioModel();
 
-        $query = $this->db->connect()->prepare("SELECT * FROM alumnos WHERE matricula = :matricula");
+        $query = $this->db->connect()->prepare("SELECT * FROM usuario WHERE idUsuario = :idUsuario");
         try {
-            $query->execute(['matricula' => $id]);
+            $query->execute(['idUsuario' => $id]);
 
             while ($row = $query->fetch()) {
-                $item->matricula = $row['matricula'];
+                $item->idUsuario = $row['idUsuario'];
+                $item->username = $row['username'];
+                $item->password = $row['password'];
+                $item->correo = $row['correo'];
                 $item->nombre = $row['nombre'];
                 $item->apellido = $row['apellido'];
+                $item->dni = $row['dni'];
+                $item->telefono = $row['telefono'];
+                $item->rol = new RolModel();
+                $item->rol->idRol = $row['idRol'];
             }
-
+            //var_dump($item);
             return $item;
         } catch(PDOException $e) {
             return null;
-        } */
+        }
+        
+        //var_dump($item);
     }
 
 }

@@ -5,7 +5,7 @@ class Controller {
 
     function __construct() {
         //echo "<p>Controlador base</p>";
-        $this->view = new View(); // Creamos un objeto de la clase View
+        $this->view = new View(); // Creamos un objeto de la clase View 
     }
 
     function loadModel($model) {
@@ -16,6 +16,10 @@ class Controller {
 
             $modelName = $model.'Model';
             $this->model = new $modelName(); // Instanciamos el modelo
+            /* echo "<br>";
+            echo "modelname: " . $modelName;
+            echo "<br>";
+            echo "model: " . $model; */
         }
     }
 

@@ -11,7 +11,9 @@
     <title>Login</title>
 </head>
 <body>
-    <?php require "views/header.php"; ?>
+
+  <?php require "views/header.php"; ?>
+
     <div class="login-box">
       <img src="<?= constant('URL') ?>public/img/Logo.png" class="avatar" alt="Avatar Image">
       <h1>POLOTEX</h1>
@@ -33,12 +35,12 @@
 
     </div>
 
-    <!-- MENSAJE DE REGISTRO -->
-    <?php if(isset($_SESSION["mensajeUsuario"])) { ?> <!-- Validamos si existe el mensaje guardado -->
-                <?= $_SESSION["mensajeUsuario"] ?> <!-- Imprimimos el mensaje en caso exista -->
-            <?php session_unset(); }?> <!-- Limpiamos los datos de la session --> 
+    <!-- MENSAJE DE REGISTRO --> <!-- Validamos si existe el mensaje guardado, Imprimimos el mensaje en caso exista, Limpiamos los datos de la session-->
+    <!-- <?php if(isset($_SESSION["mensajeUsuario"])) { ?> 
+                <?= $_SESSION["mensajeUsuario"] ?> 
+            <?php session_unset(); }?>  -->
     
-    <!-- MENSAJE LOGIN FALLIDO -->
+    <!-- MENSAJE LOGIN FALLIDO o REGISTRO EXITOSO-->
     <?= $this->mensaje ?>
 
     <?php require "views/footer.php"; ?>
