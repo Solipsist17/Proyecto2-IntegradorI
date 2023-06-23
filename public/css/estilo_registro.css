@@ -1,12 +1,12 @@
 
-body {
+/* body {
   margin: 0;
   padding: 0;
   background: black;
   font-family: sans-serif;
   height: 100vh;
-
-}
+  position: relative;
+} */
 
 .login-box {
   width: 500px;
@@ -16,14 +16,13 @@ body {
   color: #fff;
   top: 50%;
   left: 50%;
-  position: absolute;
-  transform: translate(-50%, -50%);
+  position: relative;
+  transform: translate(-50%, 0);
   box-sizing: border-box;
   padding: 70px 30px;
   border-radius: 20px;
-  margin-top: 45px;
- 
-
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 .login-box .avatar {

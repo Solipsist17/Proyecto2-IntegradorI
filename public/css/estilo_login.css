@@ -1,27 +1,27 @@
 
-body {
+/* body {
   margin: 1;
   padding:0 ;
   background: black;
   font-family: sans-serif;
   position: relative;
-  
-}
+} */
 
 .login-box {
   width: 500px;
-  height: 650px;
+  height: fit-content;
   background: black;
   border: 2px solid white;
   color: #fff;
-  top: 364px;
+  top: 50%;
   left: 50%;
   position: relative;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0);
   box-sizing: border-box;
   padding: 70px 30px;
   border-radius: 20px;
-  margin-top: 20px;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 .login-box .avatar {
