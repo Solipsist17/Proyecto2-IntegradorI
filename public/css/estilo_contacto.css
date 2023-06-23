@@ -1,0 +1,100 @@
+
+.contenedor-form{ 
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  column-count: 2;
+  display: flex;
+  background: #F2F3F4;
+  margin: 2%;
+}
+
+.login-box {
+  width: 450px;
+  height: 700px;
+  background: #154360;
+  border: 8px solid white;
+  color: #fff;
+  position: relative;
+  transform: translate(-50%, 0);
+  box-sizing: border-box;
+  padding: 50px 30px;
+  border-radius: 20px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.login-box h1 {
+  text-align: center;
+  font-size: 40px;
+  margin-top: -5%;
+}
+
+.login-box label {
+  padding: 15px;
+  font-size: 18px;
+  display: block;
+}
+
+form input[type="text"],
+form input[type="email"]{
+  width:350px;
+  padding:8px 10px;
+  border:1px solid #f6f6f6;
+  border-radius:3px;
+  background-color:#EBEDF6;
+  display:inline-block;
+}
+
+form input[type="mensaje"]{
+
+}
+form input[type="submit"]{
+  border: none;
+  outline: none;
+  height: 40px;
+  padding:8px 130px;
+  background: #ffc107;
+  color: black;
+  font-size: 18px;
+  border-radius: 20px;
+  margin-top: 15px;
+}
+form input[type="reset"]{
+  border: none;
+  outline: none;
+  height: 40px;
+  padding:8px 130px;
+  background: #ffc107;
+  color: black;
+  font-size: 18px;
+  border-radius: 20px;
+  margin-top: 15px;
+}
+
+form input[type="submit"]:hover{
+  cursor: pointer;
+  background:#CD791B ;
+  color: #000;
+}
+
+form input[type="reset"]:hover{
+  cursor: pointer;
+  background:#CD791B ;
+  color: #000;
+}
+
+.img-formu{ 
+  width:60px;
+  padding:60px;
+}
+
+.img-formu img{ 
+  height: 580px;
+  width: 550px;
+}
+.formu{
+  padding-top: 0px;
+  margin-top: 40px;
+}

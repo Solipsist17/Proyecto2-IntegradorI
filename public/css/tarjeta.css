@@ -3,58 +3,47 @@
 	width: auto;
 	height: auto;
 	padding: 0;
-	margin: 5%;
+	margin: 2%;
 	column-count: 2;
 	background-color: #C8C7C0;
-	border-radius: 12px;
-
+	border-radius: 30px;
 	display: flex;
 	align-items: center;
 }
 
 .contenedor .target {
-
-	margin-top:19% ;
-	font-size: 30px;
+	margin-top:12% ;
+	font-size: 25px;
 	margin-bottom: 50px;
 	border-radius: 12px;
 	width: 60%;
-
-
 }
+
 .contenedor .target-2 img {
-
 	height: auto;
-	width: 95%/* auto */;
+	width: 550px;
 	border-radius: 12px;
-
 	position: relative;
-    /* bottom: 100px; */
-	margin: auto 0;
 }
 
 p{
-	padding: 10%;
+	padding: 8%;
 	text-align: justify-all;
 	font-style: italic;
 }
 
 .sign{
-
-
 	align-content: center;
-
 }	
 
 .sign img{
 	height: 100px;
 	width: 100px;
 	margin-left: 45%;
-
 	}
 
 .infowe {
 	text-align: center;
 	margin-top: 5%;
-	font-size: 90px;
+	font-size: 60px;
 }
