@@ -91,8 +91,13 @@ class Usuario extends Controller {
             $_SESSION['idRol'] = $usuario->rol->idRol; 
             //$this->view->mensaje = "Bienvenido!";
             //$this->view->render('producto/index');
-            header('Location: ' . constant('URL') . 'producto');
 
+            if ($_SESSION['idRol'] == 2) {
+                header('Location: ' . constant('URL') . 'producto');
+            } 
+            if ($_SESSION['idRol'] == 1) {
+                header('Location: ' . constant('URL') . 'admin');
+            } 
             /* echo $usuario->idUsuario;
             echo "<br>";
             echo $usuario->rol->idRol */;
