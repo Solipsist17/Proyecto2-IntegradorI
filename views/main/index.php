@@ -9,10 +9,7 @@
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/tarjeta.css">
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/tarjeta2.css">
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/footer.css">
-
-    
-
-    <title>Inicio</title>
+        <title>Inicio</title>
 </head>
 <body>
 
@@ -40,10 +37,10 @@
             <p>
                 "En Polotex, nuestro principal objetivo es brindar a nuestros clientes una experiencia de compra excepcional y satisfacer sus necesidades de vestimenta con productos de calidad. Nuestra empresa se enorgullece de ofrecer prendas modernas, cómodas y duraderas que se adaptan a diferentes estilos y ocasiones."
             </p>
-            </div>
+            </div> 
 
-        <div class="target-2">
-            <img src="public/img/info2.png">
+            <div class="target-2">
+                <img src="public/img/info2.png">
         </div>
         
     </div>
@@ -63,47 +60,6 @@
 
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.080446767582!2d-80.45980192406608!3d-3.56896344238387!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9033f2d4fb886923%3A0x2321837c625a663c!2sPOLOTEX!5e0!3m2!1ses-419!2spe!4v1687507567132!5m2!1ses-419!2spe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-    </div>
-
-    <div class="contenedor2">
-
-        <div class="video-container">
-            <video muted autoplay loop><source src="public/vid/polotex.mp4" type="video/mp4"></video> 
-        </div>
-
-
-    
-        <h1 class="head-target2">Enlaces a Plataformas</h1>
-
-        <div class="redes">
-        <img src="public/img/facebook.png" usemap="#facebook">
-            <map name="#facebook">
-            <area target="_blank" alt="" title="" href="https://www.facebook.com/polotex" coords="3,0,597,599" shape="rect">
-            </map>
-
-        <img src="public/img/imstagram.png" usemap="#imstagram">
-            <map name="#imstagram">
-            <area target="_blank" alt="" title="" href="https://www.instagram.com/polotex_plt/?hl=es" coords="1,8,1024,1022" shape="rect">
-            </map>
-
-        <img src="public/img/tiktok.png" usemap="#tiktoks">
-            <map name="#tiktoks">
-            <area target="_blank" alt="" title="" href="https://www.tiktok.com/@polotex1" coords="1,8,1024,1022" shape="rect">
-            </map>
-
-        <img src="public/img/whatsapp.png" usemap="#whatsapp">
-            <map name="#whatsapp">
-            <area target="_blank" alt="" title="" href="https://wa.link/c1mjag" coords="1,8,1024,1022" shape="rect">
-            </map>
-        </div>
-
-
-      </td>
-        </div>
-
-                
-    
-   
     </div>
 
 
