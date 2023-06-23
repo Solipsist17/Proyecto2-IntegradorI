@@ -28,6 +28,10 @@ class Producto extends Controller {
         $this->view->render('producto/index');
     }
 
+    function agregarCarrito() {
+
+    }
+
     /* function listarPorCategoria($categoria) {
 
     } */

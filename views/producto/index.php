@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/header.css">
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/footer.css">
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/estilo_producto.css">
+    <link rel="stylesheet" href="<?= constant('URL') ?>public/css/carrito.css">
     <title>Producto</title>
 </head>
 
@@ -13,7 +14,7 @@
 
 <?php require "views/header.php"; ?>
 
-<section class="container">
+<section class="container" id="container" >
     <br>
 
     <!-- <?= $this->mensaje ?> -->
@@ -52,7 +53,8 @@
                 <h3 class="producto-titulo"><?= $producto->nombre ?></h3>
                 <p><?= $producto->descripcion ?></p>
                    <h4>S/<?= $producto->precio ?></h4>
-                <a href="" data-id="<?= $producto->idProducto ?>" class="btn-add-cart">Añadir</a>
+                <!-- <a data-id="<?= $producto->idProducto ?>" class="btn-add-cart" onclick="cargar(this)">Añadir</a> -->
+                <button data-id="<?= $producto->idProducto ?>" class="btn-add-cart" onclick="cargar(this)">Añadir</button>
             </div>
             <?php endforeach;?>
             <!-- <div class="carts">
@@ -134,7 +136,8 @@
                 <h3 class="producto-titulo"><?= $producto->nombre ?></h3>
                 <p><?= $producto->descripcion ?></p>
                    <h4>S/<?= $producto->precio ?></h4>
-                <a href="" data-id="<?= $producto->idProducto ?>" class="btn-add-cart">Añadir</a>
+                <!-- <a href="" data-id="<?= $producto->idProducto ?>" class="btn-add-cart">Añadir</a> -->
+                <button data-id="<?= $producto->idProducto ?>" class="btn-add-cart" onclick="cargar(this)">Añadir</button>
             </div>
             <?php endforeach;?>
 
@@ -156,7 +159,8 @@
                 <h3 class="producto-titulo"><?= $producto->nombre ?></h3>
                 <p><?= $producto->descripcion ?></p>
                    <h4>S/<?= $producto->precio ?></h4>
-                <a href="" data-id="<?= $producto->idProducto ?>" class="btn-add-cart">Añadir</a>
+                <!-- <a href="" data-id="<?= $producto->idProducto ?>" class="btn-add-cart">Añadir</a> -->
+                <button data-id="<?= $producto->idProducto ?>" class="btn-add-cart" onclick="cargar(this)">Añadir</button>
             </div>
             <?php endforeach;?>
             
@@ -239,7 +243,8 @@
                 <h3 class="producto-titulo"><?= $producto->nombre ?></h3>
                 <p><?= $producto->descripcion ?></p>
                    <h4>S/<?= $producto->precio ?></h4>
-                <a href="" data-id="<?= $producto->idProducto ?>" class="btn-add-cart">Añadir</a>
+                <!-- <a href="" data-id="<?= $producto->idProducto ?>" class="btn-add-cart">Añadir</a> -->
+                <button data-id="<?= $producto->idProducto ?>" class="btn-add-cart" onclick="cargar(this)">Añadir</button>
             </div>
             <?php endforeach;?>        
 
@@ -322,7 +327,8 @@
                 <h3 class="producto-titulo"><?= $producto->nombre ?></h3>
                 <p><?= $producto->descripcion ?></p>
                    <h4>S/<?= $producto->precio ?></h4>
-                <a href="" data-id="<?= $producto->idProducto ?>" class="btn-add-cart">Añadir</a>
+                <!-- <a href="" data-id="<?= $producto->idProducto ?>" class="btn-add-cart">Añadir</a> -->
+                <button data-id="<?= $producto->idProducto ?>" class="btn-add-cart" onclick="cargar(this)">Añadir</button>
             </div>
             <?php endforeach;?> 
 
@@ -408,7 +414,8 @@
                 <h3 class="producto-titulo"><?= $producto->nombre ?></h3>
                 <p><?= $producto->descripcion ?></p>
                    <h4>S/<?= $producto->precio ?></h4>
-                <a href="" data-id="<?= $producto->idProducto ?>" class="btn-add-cart">Añadir</a>
+                <!-- <a href="" data-id="<?= $producto->idProducto ?>" class="btn-add-cart">Añadir</a> -->
+                <button data-id="<?= $producto->idProducto ?>" class="btn-add-cart" onclick="cargar(this)">Añadir</button>
             </div>
             <?php endforeach;?> 
             
@@ -464,16 +471,77 @@
             </div> -->
         </div>
     </section>
+
+    <div class="seleccion" id="seleccion">
+
+        <div id="seleccionContainer" class="seleccion-container">
+          
+          <div class="producto-seleccion"> 
+            <p id="nombreProducto">Lorem, ipsum dolor.</p>
+            <div class="imagen-seleccion">
+              <img data-id="1" src="../img/Productos/mancuerna-20kg1.jpg" id="imgSeleccionada" class="producto-miniatura" alt="">
+              
+            </div>
+
+            <div class="producto-opciones">
+                <select class="select-unidades">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+                <select class="select-unidades">
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                </select>
+            </div>
+            
+            <div class="producto-eliminar">
+              <img src="<?php echo constant('URL')?>public/img/eliminar.png" onclick="quitarCarrito(this)" alt="">
+            </div>
+            <p class="precio-unitario">S/50.00</p>
+          </div>
+
+          
+
+        </div>
+        
+        <div class="calculo-precio">
+          <span class="subtotal">
+            Subtotal
+            <!-- <p id="subtotal">90</p> -->
+          </span>
+          <span class="envio">
+            Envío: S/20.00
+          </span>
+        </div>
+
+        <div class="carrito">
+          <img src="<?php echo constant('URL')?>public/img/carrito-de-compras.png" alt="">
+        </div>
+
+        <div class="cerrar" id="cerrar" onclick="cerrar()">
+          &#x2715
+        </div>
+
+        <button class="boton-comprar">
+          Comprar
+        </button>
+
+    </div>
  
-    <script>
+    <!-- <script>
         function showCart(x){
             document.getElementById("products-id").style.display = "block";
         }
         function closeBtn(){
              document.getElementById("products-id").style.display = "none";
         }
-    </script>
-    <script src="./carrito.js" ></script>
+    </script> -->
+
+    <script src="<?= constant('URL') ?>public/js/carrito.js" ></script>
 
 
     <?php require "views/footer.php"; ?>
