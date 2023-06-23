@@ -55,7 +55,6 @@
 
 <div class="hd-FaQ">
         <h1 class="titulo1"><center><b>¿Necesitas ayuda?</b></center></h1>      
-    <center><p class="subt">Preguntas Frecuentes</p></center>
     <hr size="2.5px" color="grey">  
     
     <div class="container_menu" id="container">
@@ -64,73 +63,49 @@
         
           <li class="list">
         <section id="menu1">
-            <a href="#menu1" class="link a1"> <span>¿Los jabones curan el acné?</span> <i class="fas fa-chevron-down"></i> </a>
-            <p>No, los jabones no son curativos, sino parte de una rutina de limpieza.</p>
+            <a href="#menu1" class="link a1"> <span>¿Los productos son de buena calidad?</span> <i class="fas fa-chevron-down"></i> </a>
+            <p>Si, todos los productos son importados y a base de algodón.</p>
         </section>
         </li>
 
         <li class="list">
         <section id="menu2">
-            <a href="#menu2" class="link a1"> <span>¿Son productos naturales?</span> <i class="fas fa-chevron-down"></i> </a>
-            <p>Por supuesto, trabajamos con aceites esenciales, hierbas, flores, extractos naturales, entre otros productos de los cuales sabemos su procedencia.</p>
+            <a href="#menu2" class="link a1"> <span>¿Cuál es el tiempo de espera del pedido al realizar la compra por web?</span> <i class="fas fa-chevron-down"></i> </a>
+            <p>Tiene un tiempo de espera máximo de 10min, en su correo podrá verificar el día de entrega.</p>
         </section>
         </li>
 
         <li class="list">
         <section id="menu3">
-            <a href="#menu3" class="link a1"> <span>¿El precio del jabón puede variar?</span> <i class="fas fa-chevron-down"></i> </a>
-            <p>Sí, dependiendo de los productos y el peso que lleve.</p>
+            <a href="#menu3" class="link a1"> <span>¿Cuál es la forma de pago?</span> <i class="fas fa-chevron-down"></i> </a>
+            <p>A través de paypal por la pagina web, y de manera presencial por yape, plin o efectivo.</p>
         </section>
         </li>
 
-        <li class="list">
+       <li class="list">
         <section id="menu4">
-            <a href="#menu4" class="link a1"> <span>¿Cuál es el tiempo del pedido?</span> <i class="fas fa-chevron-down"></i> </a>
-            <p>De entre 7 a 10 días de anticipación conforme hagas el pedido.</p>
-        </section>
-        </li>
-
-        <li class="list">
-        <section id="menu5">
-            <a href="#menu5" class="link a1"> <span>¿Cuál es la forma de pago?</span> <i class="fas fa-chevron-down"></i> </a>
-            <p>Transferencia, yape, plin o efectivo.</p>
-        </section>
-        </li>
-
-        <li class="list">
-        <section id="menu6">
-            <a href="#menu6" class="link a1"><span>¿Cuentan con tienda fisica?</span> <i class="fas fa-chevron-down"></i></a>
-            <p>No, somos una tienda 100% virtual.</p>
-        </section>
-        </li>
-
-        <li class="list">   
-        <section id="menu7">
-            <a href="#menu7" class="link a1"><span>¿Por qué debemos usar productos Brisa Natural™?</span> <i class="fas fa-chevron-down"></i></a>
-            <p>Nuestros productos son artesanales, lo que permite conocer los ingredientes que se usan para elaborarlos, además son personalizados según tus necesidades, siendo respetuosos con tu piel y el medio ambiente.</p>
-        </section>
-        </li>
-
-        <li class="list">
-        <section id="menu8">
-            <a href="#menu8"  class="link a1"><span>¿Cómo separo mi pedido?</span> <i class="fas fa-chevron-down"></i></a>
-            <p>Al momento de la compra se debe abonar el 50% del total y el otro 50% en la fecha de entrega.</p>
+            <a href="#menu4"  class="link a1"><span>¿Hacen envíos a nivel nacional?</span> <i class="fas fa-chevron-down"></i></a>
+            <p>Sí, envíos a todo el Perú.</p>
         </section>  
         </li>
 
-        <li class="list">
-        <section id="menu9">
-            <a href="#menu9"  class="link a1"><span>¿Hacen envíos a nivel nacional?</span> <i class="fas fa-chevron-down"></i></a>
-            <p>Sí, envíos a todo el Perú.</p>
+         <li class="list">
+        <section id="menu5">
+            <a href="#menu5"  class="link a1"><span>¿Hacen cambios o devoluciones?</span> <i class="fas fa-chevron-down"></i></a>
+            <p>Para solicitar cambio: Dirigete a la tienda y menciona a la encargada de a tienda que deseas realizar un cambio.Escoge el nuevo producto que quieres y dirigete a la caja.Y por utlimo, entrega el producto a cambiar  y el nuevo producto al persona de la tienda.</p>
+            <p>Para solicitar devolución: Ingresa una solictud de devolcuion presónando el siguiente boton y sigue los pasos que se indican.
+            <a href="../index.php#FormInd">AQUI</a></p>
         </section>  
         </li>
 
         <li class="list">
         <section id="menu10">
-            <a href="#menu10"  class="link a1 menuf"><span>¿Necesitas más información? ¿Puedo hacer un pedido personalizado?</span> <i class="fas fa-chevron-down"></i></a>
-            <p>Puede contactarnos de manera empresarial al 961-749-664. Para reclamos y/o sugerencias sírvase utilizar nuestro formulario dando click <a href="../index.php#FormInd">AQUI</a></p>
+            <a href="#menu10"  class="link a1 menuf"><span>¿Necesitas más información?</span> <i class="fas fa-chevron-down"></i></a>
+            <p>Puede contactarnos a través de nuestras plataformas como facebook, instagram, whatsapp o rellenando el formulario que esta en la parte superior.
+            </p>
         </section>
         </li>
+
 
     </ul>
     </nav>
