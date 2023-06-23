@@ -8,7 +8,8 @@
 	background-color: #C8C7C0;
 	border-radius: 12px;
 
-
+	display: flex;
+	align-items: center;
 }
 
 .contenedor .target {
@@ -17,15 +18,19 @@
 	font-size: 30px;
 	margin-bottom: 50px;
 	border-radius: 12px;
-	
+	width: 60%;
 
 
 }
 .contenedor .target-2 img {
 
 	height: auto;
-	width: auto;
+	width: 95%/* auto */;
 	border-radius: 12px;
+
+	position: relative;
+    /* bottom: 100px; */
+	margin: auto 0;
 }
 
 p{
