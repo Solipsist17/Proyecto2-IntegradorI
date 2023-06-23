@@ -79,17 +79,20 @@ class Usuario extends Controller {
     }
 
     function iniciarSesion() {
-        //header('Location: ' . constant('URL'));
+        
         $username = $_POST['username'];
-        $password = $_POST['password'];
+        $password = $_POST['password']; 
 
         $usuario = $this->model->autenticar(["username" => $username, "password" => $password]); // llamamos a la función que retorna al objeto usuario
 
         if ($usuario !== null) {
             // El objeto $usuario no es null, el usuario ha sido autenticado correctamente
             $_SESSION['idUsuario'] = $usuario->idUsuario; // Se consulta a la session para comprar productos
-            $_SESSION['idRol'] = $usuario->rol->idRol;
+            $_SESSION['idRol'] = $usuario->rol->idRol; 
+            //$this->view->mensaje = "Bienvenido!";
+            //$this->view->render('producto/index');
             header('Location: ' . constant('URL') . 'producto');
+
             /* echo $usuario->idUsuario;
             echo "<br>";
             echo $usuario->rol->idRol */;

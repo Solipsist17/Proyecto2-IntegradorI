@@ -14,6 +14,14 @@
 
   <?php require "views/header.php"; ?>
 
+    <!-- MENSAJE LOGIN FALLIDO o REGISTRO EXITOSO-->
+    <?php if (!empty($this->mensaje)): ?>
+      <div class="alert">
+        <p class="message"><?= $this->mensaje ?></p>
+        <span class="close-btn">&times;</span>
+      </div>
+    <?php endif; ?>
+
     <div class="login-box">
       <img src="<?= constant('URL') ?>public/img/Logo.png" class="avatar" alt="Avatar Image">
       <h1>POLOTEX</h1>
@@ -40,10 +48,18 @@
                 <?= $_SESSION["mensajeUsuario"] ?> 
             <?php session_unset(); }?>  -->
     
-    <!-- MENSAJE LOGIN FALLIDO o REGISTRO EXITOSO-->
-    <?= $this->mensaje ?>
 
     <?php require "views/footer.php"; ?>
+
+    <script>
+      const closeButton = document.querySelector('.alert .close-btn');
+      const alertContainer = document.querySelector('.alert');
+
+      closeButton.addEventListener('click', () => {
+        alertContainer.style.display = 'none';
+      });
+
+    </script>
 
 </body>
 </html>

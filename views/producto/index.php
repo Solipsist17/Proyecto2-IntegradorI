@@ -12,7 +12,7 @@
     <?php require "views/header.php"; ?>
 
     <h1>Esta es la vista del Catálogo de productos</h1> 
-    <?= $this->mensaje ?>
+    <?= $this->mensaje ?> 
     
 
     <?php require "views/footer.php"; ?>

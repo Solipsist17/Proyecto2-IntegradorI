@@ -8,3 +8,36 @@ body {
     background-color: #eee;
     /* height: 100%; */
 }
+
+/* Mensajes de alerta */
+.alert {
+    position: relative;
+    padding: 16px;
+    background-color: #f2dede;
+    color: #a94442;
+    border: 1px solid #ebccd1;
+    border-radius: 4px;
+    width: 20%;
+    height: 20px;
+    margin: 10px auto;
+  }
+  
+  .alert .message {
+    /* margen inferior opcional */
+  }
+  
+  .alert .close-btn {
+    position: absolute;
+    top: 0px;
+    right: 8px;
+    font-size: 46px;
+    color: #a94442;
+    cursor: pointer;
+  }
+  
+  .alert .close-btn:hover {
+    color: #801f1b;
+  }
+  
+  
+  
