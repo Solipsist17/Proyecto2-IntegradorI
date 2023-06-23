@@ -15,9 +15,12 @@
 
 <section class="container">
     <br>
+
+    <!-- <?= $this->mensaje ?> -->
+    <!-- <?= var_dump($this->accesoriosHombres) ?> -->
  
     <h1>LAS MEJORES PRENDAS Y ACCESORIOS PARA TI</h2>
-                <br>
+        <br>
 
         <div class="products">
             <div class="title">
@@ -28,9 +31,33 @@
             </div>
             <br>
             
+            <?php 
+                //include_once "models/productomodel.php";
+                foreach($this->ropaMujeres as $producto) :
+                    //$producto = new Producto();
+                    //$producto = $row;
+            ?>
             <div class="carts">
                 <div>
-                    <img src="./public/img/blusas.jpg" alt="">
+                    <img src="<?php echo constant('URL')?><?= $producto->imagen ?>" alt="">
+                    <?php 
+                    if ($producto->oferta->idOferta != null) : 
+                        include_once("models/ofertamodel.php");
+                        $oferta = new OfertaModel();
+                        $oferta = $oferta->consultarOferta($producto->oferta->idOferta);
+                    ?>
+                        <p><span><?= ($oferta->descuento*100) ?>%</span> </p>
+                    <?php endif; ?>
+                </div>
+                <h3 class="producto-titulo"><?= $producto->nombre ?></h3>
+                <p><?= $producto->descripcion ?></p>
+                   <h4>S/<?= $producto->precio ?></h4>
+                <a href="" data-id="<?= $producto->idProducto ?>" class="btn-add-cart">Añadir</a>
+            </div>
+            <?php endforeach;?>
+            <!-- <div class="carts">
+                <div>
+                    <img src="<?php echo constant('URL')?>public/img/blusa1.jpg" alt="">
                 </div>
                 <h3>BLUSA FLOREADA BLANCA</h3>
                 <p>Blusa blanca con flores rosadas</p>
@@ -40,7 +67,7 @@
 
             <div class="carts">
                 <div>
-                    <img src="./public/img/blusa2.jpg" alt="">
+                    <img src="<?php echo constant('URL')?>public/img/blusa2.jpg" alt="">
                 </div>
                 <h4>BLUSA FLOREADA VERDE</h4>
                 <p>Blusa verde con flores de colores</p>
@@ -50,7 +77,7 @@
            
             <div class="carts">
                 <div>
-                    <img src="./public/img/blusa 3.jpg" alt="">
+                    <img src="<?php echo constant('URL')?>public/img/blusa3.jpg" alt="">
                 </div>
                 <h4>BLUSA FLOREADA MORADA</h4>
                 <p>Blusa morada con flores blancas</p>
@@ -60,7 +87,7 @@
 
             <div class="carts">
                 <div>
-                    <img src="./public/img/blusa4.jpg" alt="">
+                    <img src="<?php echo constant('URL')?>public/img/blusa4.jpg" alt="">
                 </div>
                 <h4>BLUSA FLOREADA VERDE AGUA</h4>
                 <p>Blusa verde agua con flores blancas</p>
@@ -70,13 +97,13 @@
 
             <div class="carts">
                 <div>
-                    <img src="./public/img/blusa7.jpg" alt="">
+                    <img src="<?php echo constant('URL')?>public/img/blusa7.jpg" alt="">
                 </div>
                 <h4>BLUSA ROJA</h4>
                 <p>Blusa roja con escote en la espalda y hombros</p>
                    <h4>S/. 55.00</h4>
                 <a href="" data-id="1" class="btn-add-cart">Añadir</a>
-            </div>
+            </div> -->
         </div>
 
 
@@ -88,10 +115,54 @@
             <br/>
             </div>
             <br>
-            
+
+            <?php 
+                foreach($this->ropaNiños as $producto) :
+            ?>
             <div class="carts">
                 <div>
-                    <img src="./public/img/pijama_niño1.jpg" alt="">
+                    <img src="<?php echo constant('URL')?><?= $producto->imagen ?>" alt="">
+                    <?php 
+                    if ($producto->oferta->idOferta != null) : 
+                        include_once("models/ofertamodel.php");
+                        $oferta = new OfertaModel();
+                        $oferta = $oferta->consultarOferta($producto->oferta->idOferta);
+                    ?>
+                        <p><span><?= ($oferta->descuento*100) ?>%</span> </p>
+                    <?php endif; ?>
+                </div>
+                <h3 class="producto-titulo"><?= $producto->nombre ?></h3>
+                <p><?= $producto->descripcion ?></p>
+                   <h4>S/<?= $producto->precio ?></h4>
+                <a href="" data-id="<?= $producto->idProducto ?>" class="btn-add-cart">Añadir</a>
+            </div>
+            <?php endforeach;?>
+
+            <?php 
+                foreach($this->accesoriosNiños as $producto) :
+            ?>
+            <div class="carts">
+                <div>
+                    <img src="<?php echo constant('URL')?><?= $producto->imagen ?>" alt="">
+                    <?php 
+                    if ($producto->oferta->idOferta != null) : 
+                        include_once("models/ofertamodel.php");
+                        $oferta = new OfertaModel();
+                        $oferta = $oferta->consultarOferta($producto->oferta->idOferta);
+                    ?>
+                        <p><span><?= ($oferta->descuento*100) ?>%</span> </p>
+                    <?php endif; ?>
+                </div>
+                <h3 class="producto-titulo"><?= $producto->nombre ?></h3>
+                <p><?= $producto->descripcion ?></p>
+                   <h4>S/<?= $producto->precio ?></h4>
+                <a href="" data-id="<?= $producto->idProducto ?>" class="btn-add-cart">Añadir</a>
+            </div>
+            <?php endforeach;?>
+            
+            <!-- <div class="carts">
+                <div>
+                    <img src="<?php echo constant('URL')?>public/img/pijama_niño1.jpg" alt="">
                 </div>
                 <h3>PIJAMA PARA NIÑO </h3>
                 <p>Conjunto de pijama para niño talla 10</p>
@@ -101,7 +172,7 @@
 
             <div class="carts">
                 <div>
-                    <img src="./public/img/pijama_niño2.jpg" alt="">
+                    <img src="<?php echo constant('URL')?>public/img/pijama_niño2.jpg" alt="">
                 </div>
                 <h3>PIJAMA PARA NIÑA </h3>
                 <p>Conjunto de pijama para niña talla 10</p>
@@ -111,7 +182,7 @@
            
             <div class="carts">
                 <div>
-                    <img src="./public/img/pijama_niño3.jpg" alt="">
+                    <img src="<?php echo constant('URL')?>public/img/pijama_niño3.jpg" alt="">
                 </div>
                <h3>PIJAMA PARA NIÑO </h3>
                 <p>Conjunto de pijama para niño talla 8</p>
@@ -121,7 +192,7 @@
 
             <div class="carts">
                 <div>
-                    <img src="./public/img/gorra_niño1.jpg" alt="">
+                    <img src="<?php echo constant('URL')?>public/img/gorra_niño1.jpg" alt="">
                 </div>
                 <h4>GORRO AZUL</h4>
                 <p>Gorro azul para niño</p>
@@ -131,13 +202,13 @@
 
             <div class="carts">
                 <div>
-                    <img src="./public/img/gorra_niño2.jpg" alt="">
+                    <img src="<?php echo constant('URL')?>public/img/gorra_niño2.jpg" alt="">
                 </div>
                 <h4>GORRO ROSADO</h4>
                 <p>Gorro rosado para niña</p>
                    <h4>S/. 23.00</h4>
                 <a href="" data-id="1" class="btn-add-cart">Añadir</a>
-            </div>
+            </div> -->
         </div>
 
 
@@ -150,9 +221,31 @@
             </div>
             <br>
             
+            <?php 
+                foreach($this->ropaHombres as $producto) :
+            ?>
             <div class="carts">
                 <div>
-                    <img src="./public/img/chompa_deporte_hombre1.png" alt="">
+                    <img src="<?php echo constant('URL')?><?= $producto->imagen ?>" alt="">
+                    <?php 
+                    if ($producto->oferta->idOferta != null) : 
+                        include_once("models/ofertamodel.php");
+                        $oferta = new OfertaModel();
+                        $oferta = $oferta->consultarOferta($producto->oferta->idOferta);
+                    ?>
+                        <p><span><?= ($oferta->descuento*100) ?>%</span> </p>
+                    <?php endif; ?>
+                </div>
+                <h3 class="producto-titulo"><?= $producto->nombre ?></h3>
+                <p><?= $producto->descripcion ?></p>
+                   <h4>S/<?= $producto->precio ?></h4>
+                <a href="" data-id="<?= $producto->idProducto ?>" class="btn-add-cart">Añadir</a>
+            </div>
+            <?php endforeach;?>        
+
+            <!-- <div class="carts">
+                <div>
+                    <img src="<?php echo constant('URL')?>public/img/chompa_deporte_hombre1.png" alt="">
                 </div>
                 <h3>CHOMPA GRIS </h3>
                 <p>Chompa gris con capucha</p>
@@ -162,7 +255,7 @@
 
             <div class="carts">
                 <div>
-                    <img src="./public/img/chompa_deporte_hombre2.png" alt="">
+                    <img src="<?php echo constant('URL')?>public/img/chompa_deporte_hombre2.png" alt="">
                 </div>
                 <h4>CHOMPA CON PUNTOS</h4>
                 <p>Chompa gris con puntos negros con capucha</p>
@@ -172,7 +265,7 @@
            
             <div class="carts">
                 <div>
-                    <img src="./public/img/chompa_deporte_hombre3.png" alt="">
+                    <img src="<?php echo constant('URL')?>public/img/chompa_deporte_hombre3.png" alt="">
                 </div>
                 <h4>CASACA NEGRA</h4>
                 <p>Casaca deportiva negra</p>
@@ -182,7 +275,7 @@
 
             <div class="carts">
                 <div>
-                    <img src="./public/img/chompa_deporte_hombre7.png" alt="">
+                    <img src="<?php echo constant('URL')?>public/img/chompa_deporte_hombre7.png" alt="">
                 </div>
                 <h4>CHOMPA DE INVIERNO</h4>
                 <p>Chompa de invierno verde oscuro</p>
@@ -192,13 +285,13 @@
 
             <div class="carts">
                 <div>
-                    <img src="./public/img/chompa_deporte_hombre5.png" alt="">
+                    <img src="<?php echo constant('URL')?>public/img/chompa_deporte_hombre5.png" alt="">
                 </div>
                 <h4>CHOMPA AZUL</h4>
                 <p>Chompa azul con capucha</p>
                    <h4>S/. 45.90</h4>
                 <a href="" data-id="1" class="btn-add-cart">Añadir</a>
-            </div>
+            </div> -->
         </div>
 
 
@@ -211,7 +304,29 @@
             </div>
             <br>
             
+            <?php 
+                foreach($this->accesoriosMujeres as $producto) :
+            ?>
             <div class="carts">
+                <div>
+                    <img src="<?php echo constant('URL')?><?= $producto->imagen ?>" alt="">
+                    <?php 
+                    if ($producto->oferta->idOferta != null) : 
+                        include_once("models/ofertamodel.php");
+                        $oferta = new OfertaModel();
+                        $oferta = $oferta->consultarOferta($producto->oferta->idOferta);
+                    ?>
+                        <p><span><?= ($oferta->descuento*100) ?>%</span> </p>
+                    <?php endif; ?>
+                </div>
+                <h3 class="producto-titulo"><?= $producto->nombre ?></h3>
+                <p><?= $producto->descripcion ?></p>
+                   <h4>S/<?= $producto->precio ?></h4>
+                <a href="" data-id="<?= $producto->idProducto ?>" class="btn-add-cart">Añadir</a>
+            </div>
+            <?php endforeach;?> 
+
+            <!-- <div class="carts">
                 <div>
                     <img src="./public/img/accesorio1.jpg" alt="">
                     <p><span>5%</span> </p>
@@ -262,7 +377,7 @@
                 <p>Par de gancho de pelo diferentes colores</p>
                    <h4>S/. 6.00</h4>
                 <a href="" data-id="1" class="btn-add-cart">Añadir</a>
-            </div>
+            </div> -->
         </div>
 
 
@@ -274,8 +389,30 @@
             <br/>
             </div>
             <br>
-            
+
+            <?php 
+                foreach($this->accesoriosHombres as $producto) :
+            ?>
             <div class="carts">
+                <div>
+                    <img src="<?php echo constant('URL')?><?= $producto->imagen ?>" alt="">
+                    <?php 
+                    if ($producto->oferta->idOferta != null) : 
+                        include_once("models/ofertamodel.php");
+                        $oferta = new OfertaModel();
+                        $oferta = $oferta->consultarOferta($producto->oferta->idOferta);
+                    ?>
+                        <p><span><?= ($oferta->descuento*100) ?>%</span> </p>
+                    <?php endif; ?>
+                </div>
+                <h3 class="producto-titulo"><?= $producto->nombre ?></h3>
+                <p><?= $producto->descripcion ?></p>
+                   <h4>S/<?= $producto->precio ?></h4>
+                <a href="" data-id="<?= $producto->idProducto ?>" class="btn-add-cart">Añadir</a>
+            </div>
+            <?php endforeach;?> 
+            
+            <!-- <div class="carts">
                 <div>
                     <img src="./public/img/reloj1.jpg" alt="">
                     <p><span>8%</span> </p>
@@ -324,7 +461,7 @@
                 <p>Billetera marron para hombres</p>
                    <h4>S/. 69.90</h4>
                 <a href="" data-id="1" class="btn-add-cart">Añadir</a>
-            </div>
+            </div> -->
         </div>
     </section>
  
@@ -335,7 +472,6 @@
         function closeBtn(){
              document.getElementById("products-id").style.display = "none";
         }
-
     </script>
     <script src="./carrito.js" ></script>
 

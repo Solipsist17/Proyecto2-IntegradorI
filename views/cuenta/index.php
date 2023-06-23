@@ -45,7 +45,6 @@
     </form>
 
     <!-- <?php var_dump($this->usuario) ?> -->
-    <?= $this->mensaje ?>
 
      <?php require "views/footer.php"; ?>
 

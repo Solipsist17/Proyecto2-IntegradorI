@@ -44,6 +44,9 @@ h3{
     width: 100%;
     height: 100%;
 }
+.producto-titulo {
+    text-transform: capitalize;
+}
 .carts p{
     font-family: inherit;
     font-weight: 50%;

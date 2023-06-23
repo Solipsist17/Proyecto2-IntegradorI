@@ -13,30 +13,30 @@ body {
 .alert {
     position: relative;
     padding: 16px;
-    background-color: #f2dede;
-    color: #a94442;
-    border: 1px solid #ebccd1;
+    background-color: #FFCC80 /* #f2dede */;
+    color: #FF5722 /* #a94442 */;
+    border: 1px solid #FFB74D /* #ebccd1 */;
     border-radius: 4px;
-    width: 20%;
+    /* width: 100px; */
     height: 20px;
-    margin: 10px auto;
+    margin: 0 auto;
   }
   
-  .alert .message {
-    /* margen inferior opcional */
-  }
+  /* .alert .message {
+    margen inferior opcional
+  } */
   
   .alert .close-btn {
     position: absolute;
     top: 0px;
     right: 8px;
     font-size: 46px;
-    color: #a94442;
+    color: #FF5722 /* #a94442 */;
     cursor: pointer;
   }
   
   .alert .close-btn:hover {
-    color: #801f1b;
+    color: #E64A19 /* #801f1b */;
   }
   
   

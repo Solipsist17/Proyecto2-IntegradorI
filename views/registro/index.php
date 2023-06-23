@@ -12,7 +12,14 @@
   <body>
     <?php require "views/header.php"; ?>
 
-    <br>
+    <!-- MENSAJE LOGIN FALLIDO o REGISTRO EXITOSO-->
+    <?php if (!empty($this->mensaje)): ?>
+      <div class="alert">
+        <p class="message"><?= $this->mensaje ?></p>
+        <span class="close-btn">&times;</span>
+      </div>
+    <?php endif; ?>
+
 
     <div class="login-box">
       <img src="<?= constant('URL') ?>public/img/Logo.png" class="avatar" alt="Avatar Image">
@@ -51,9 +58,10 @@
 
     </div>
 
-    <?= $this->mensaje ?>
+    <?php require "views/footer.php"; ?>
 
-     <?php require "views/footer.php"; ?>
+    <!-- js para cerrar el mensaje -->
+    <script src="<?= constant('URL') ?>public/js/cerrarMensaje.js"></script>
 
   </body>
 

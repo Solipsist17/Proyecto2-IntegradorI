@@ -51,15 +51,8 @@
 
     <?php require "views/footer.php"; ?>
 
-    <script>
-      const closeButton = document.querySelector('.alert .close-btn');
-      const alertContainer = document.querySelector('.alert');
-
-      closeButton.addEventListener('click', () => {
-        alertContainer.style.display = 'none';
-      });
-
-    </script>
+    <!-- js para cerrar el mensaje -->
+    <script src="<?= constant('URL') ?>public/js/cerrarMensaje.js"></script>
 
 </body>
 </html>
