@@ -1,0 +1,55 @@
+
+.contenedor {
+	width: auto;
+	height: auto;
+	padding: 0;
+	margin: 5%;
+	column-count: 2;
+	background-color: #C8C7C0;
+	border-radius: 12px;
+
+
+}
+
+.contenedor .target {
+
+	margin-top:19% ;
+	font-size: 30px;
+	margin-bottom: 50px;
+	border-radius: 12px;
+	
+
+
+}
+.contenedor .target-2 img {
+
+	height: auto;
+	width: auto;
+	border-radius: 12px;
+}
+
+p{
+	padding: 10%;
+	text-align: justify-all;
+	font-style: italic;
+}
+
+.sign{
+
+
+	align-content: center;
+
+}	
+
+.sign img{
+	height: 100px;
+	width: 100px;
+	margin-left: 45%;
+
+	}
+
+.infowe {
+	text-align: center;
+	margin-top: 5%;
+	font-size: 90px;
+}
