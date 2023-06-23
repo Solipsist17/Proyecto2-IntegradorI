@@ -12,7 +12,7 @@ class UsuarioModel extends Model {
     public $apellido;
     public $dni;
     public $telefono;
-    public $rol; // idRol
+    public $rol; // idRol 
 
     public function __construct() {
         parent::__construct();

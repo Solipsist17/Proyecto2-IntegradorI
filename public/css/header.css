@@ -11,7 +11,7 @@ header {
 body {
 	font-family: sans-serif;
 	box-sizing: border-box;
-	min-height: 100vh;
+	min-height: 170vh;
 	background: white;
 }
 
@@ -79,6 +79,7 @@ img {
 	transition: all .2s ease;
 }
 
+
 /*ESTILO REACTIVO AL a */
 .header .navigation ul li a:hover{
 
@@ -122,8 +123,6 @@ img {
 	text-align: center;
 	border-radius: 5px;
 }
-
-
 
 #toggle,
 

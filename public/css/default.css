@@ -8,3 +8,36 @@ body {
     background-color: #eee;
     /* height: 100%; */
 }
+
+/* Mensajes de alerta */
+.alert {
+    position: relative;
+    padding: 16px;
+    background-color: #FFCC80 /* #f2dede */;
+    color: #FF5722 /* #a94442 */;
+    border: 1px solid #FFB74D /* #ebccd1 */;
+    border-radius: 4px;
+    /* width: 100px; */
+    height: 20px;
+    margin: 0 auto;
+  }
+  
+  /* .alert .message {
+    margen inferior opcional
+  } */
+  
+  .alert .close-btn {
+    position: absolute;
+    top: 0px;
+    right: 8px;
+    font-size: 46px;
+    color: #FF5722 /* #a94442 */;
+    cursor: pointer;
+  }
+  
+  .alert .close-btn:hover {
+    color: #E64A19 /* #801f1b */;
+  }
+  
+  
+  
