@@ -1,6 +1,6 @@
 <?php 
 
-define('URL','http://localhost/Proyecto2-IntegradorI/');
+define('URL','http://localhost:8080/Proyecto2-IntegradorI/');
 
 define('HOST', 'localhost');
 define('USER', 'root');
