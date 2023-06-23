@@ -51,7 +51,7 @@
     <!----------------->
 
     <div class="container-texto">
-      <text class ="head-text"><h1>Encuentras nuestras tienda :</h1></text>    
+      <text class ="head-text"><p>Encuentras nuestras tienda :</p></text>    
     </div>
 
     <div class="container-mapa">
