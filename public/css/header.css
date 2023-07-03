@@ -27,7 +27,7 @@ body {
 	display: flex;
 	align-items: stretch;
 	justify-content: space-between;
-	z-index: 1000;
+	z-index: 8;
 }
 
 /*ESTILO DEL LOGO DEL MENU*/
@@ -61,6 +61,10 @@ img {
 
 .header .navigation span{
 	margin-top: 10px;
+}
+
+ul {
+	margin: 0;
 }
 
 /*ESTILO DE LA PRIMERA LI */
@@ -122,6 +126,15 @@ img {
 	font-size: 12px;
 	text-align: center;
 	border-radius: 5px;
+}
+
+.header .carrito-header {
+	cursor: pointer;
+}
+
+.header .carrito-header img {
+	width: 2rem;
+	height: 2rem;
 }
 
 #toggle,

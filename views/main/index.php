@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/tarjeta.css">
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/tarjeta2.css">
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/footer.css">
-        <title>Inicio</title>
+    <link rel="stylesheet" href="<?= constant('URL') ?>public/css/carrito.css">
+    <title>Inicio</title>
 </head>
 <body>
 
@@ -62,7 +63,72 @@
 
     </div>
 
+    <?php if (isset($_SESSION['idUsuario'])) : ?>
+    <div class="seleccion" id="seleccion">
+
+        <div id="seleccionContainer" class="seleccion-container">
+          
+          <div class="producto-seleccion"> 
+            <p id="nombreProducto">Lorem, ipsum dolor.</p>
+            <div class="imagen-seleccion">
+              <img data-id="1" src="../img/Productos/mancuerna-20kg1.jpg" id="imgSeleccionada" class="producto-miniatura" alt="">
+              
+            </div>
+
+            <div class="producto-opciones">
+                <select class="select-unidades">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+                <select class="select-tallas">
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                </select>
+            </div>
+            
+            <div class="producto-eliminar">
+              <img src="<?php echo constant('URL')?>public/img/eliminar.png" onclick="quitarCarrito(this)" alt="">
+            </div>
+            <p class="precio-unitario">S/50.00</p>
+          </div>
+
+          
+
+        </div>
+        
+        <div class="calculo-precio">
+          <span class="subtotal">
+            Subtotal
+            <!-- <p id="subtotal">90</p> -->
+          </span>
+          <span class="envio">
+            <!-- Envío: S/20.00 -->
+            Envío: Calculado en el próximo paso
+          </span>
+        </div>
+
+        <div class="carrito">
+          <img src="<?php echo constant('URL')?>public/img/carrito-de-compras.png" alt="">
+        </div>
+
+        <div class="cerrar" id="cerrar" onclick="cerrar()">
+          &#x2715
+        </div>
+
+        <button class="boton-comprar">
+          Comprar
+        </button>
+
+    </div>
+
+    <?php endif; ?>
+
 
     <?php require "views/footer.php"; ?>
+    <script src="<?= constant('URL') ?>public/js/carrito.js" ></script>
 </body>
 </html>

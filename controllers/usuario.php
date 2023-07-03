@@ -93,6 +93,7 @@ class Usuario extends Controller {
             //$this->view->render('producto/index');
 
             if ($_SESSION['idRol'] == 2) {
+                $_SESSION['productosCarrito'] = []; // Inicializamos el array del carrito
                 header('Location: ' . constant('URL') . 'producto');
             } 
             if ($_SESSION['idRol'] == 1) {

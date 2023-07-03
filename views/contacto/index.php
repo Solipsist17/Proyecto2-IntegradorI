@@ -33,7 +33,7 @@
             <label for="apellidos">Apellidos</label>
             <input type="text" name="apellidos" id="apellidos" placeholder="Ingrese sus apellidos"/>
 
-            <label for="email" />Email</label>
+            <label for="email">Email</label>
             <input type="email" name="email" id="email" placeholder="Email" required />
 
             <label for="Sexo">Sexo 

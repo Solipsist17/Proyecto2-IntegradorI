@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="<?php echo constant('URL')?>public/css/default.css"> -->
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/header.css">
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/footer.css">
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/estilo_producto.css">
@@ -17,10 +18,16 @@
 <section class="container" id="container" >
     <br>
 
-    <!-- <?= $this->mensaje ?> -->
-    <!-- <?= var_dump($this->accesoriosHombres) ?> -->
+    <!-- MENSAJE AGREGAR CARRITO FALLIDO -->
+    <!-- <?php if (isset($_SESSION['mensaje'])){ ?>
+      <div class="alert">
+        <p class="message"><?= $_SESSION['mensaje'] ?></p>
+        <span class="close-btn">&times;</span>
+      </div>
+    <?php unset($_SESSION['mensaje']); } ?> -->
  
     <h1>LAS MEJORES PRENDAS Y ACCESORIOS PARA TI</h2>
+
         <br>
 
         <div class="products">
@@ -54,7 +61,9 @@
                 <p><?= $producto->descripcion ?></p>
                    <h4>S/<?= $producto->precio ?></h4>
                 <!-- <a data-id="<?= $producto->idProducto ?>" class="btn-add-cart" onclick="cargar(this)">Añadir</a> -->
-                <button data-id="<?= $producto->idProducto ?>" class="btn-add-cart" onclick="cargar(this)">Añadir</button>
+                <?php if (isset($_SESSION['idUsuario'])) : ?>
+                <button data-id="<?= $producto->idProducto ?>" class="btn-add-cart" onclick="agregarCarrito(this)">Añadir</button>
+                <?php endif; ?>
             </div>
             <?php endforeach;?>
             <!-- <div class="carts">
@@ -137,7 +146,9 @@
                 <p><?= $producto->descripcion ?></p>
                    <h4>S/<?= $producto->precio ?></h4>
                 <!-- <a href="" data-id="<?= $producto->idProducto ?>" class="btn-add-cart">Añadir</a> -->
-                <button data-id="<?= $producto->idProducto ?>" class="btn-add-cart" onclick="cargar(this)">Añadir</button>
+                <?php if (isset($_SESSION['idUsuario'])) : ?>
+                <button data-id="<?= $producto->idProducto ?>" class="btn-add-cart" onclick="agregarCarrito(this)">Añadir</button>
+                <?php endif; ?>
             </div>
             <?php endforeach;?>
 
@@ -160,7 +171,9 @@
                 <p><?= $producto->descripcion ?></p>
                    <h4>S/<?= $producto->precio ?></h4>
                 <!-- <a href="" data-id="<?= $producto->idProducto ?>" class="btn-add-cart">Añadir</a> -->
-                <button data-id="<?= $producto->idProducto ?>" class="btn-add-cart" onclick="cargar(this)">Añadir</button>
+                <?php if (isset($_SESSION['idUsuario'])) : ?>
+                <button data-id="<?= $producto->idProducto ?>" class="btn-add-cart" onclick="agregarCarrito(this)">Añadir</button>
+                <?php endif; ?>
             </div>
             <?php endforeach;?>
             
@@ -244,7 +257,9 @@
                 <p><?= $producto->descripcion ?></p>
                    <h4>S/<?= $producto->precio ?></h4>
                 <!-- <a href="" data-id="<?= $producto->idProducto ?>" class="btn-add-cart">Añadir</a> -->
-                <button data-id="<?= $producto->idProducto ?>" class="btn-add-cart" onclick="cargar(this)">Añadir</button>
+                <?php if (isset($_SESSION['idUsuario'])) : ?>
+                <button data-id="<?= $producto->idProducto ?>" class="btn-add-cart" onclick="agregarCarrito(this)">Añadir</button>
+                <?php endif; ?>
             </div>
             <?php endforeach;?>        
 
@@ -328,7 +343,9 @@
                 <p><?= $producto->descripcion ?></p>
                    <h4>S/<?= $producto->precio ?></h4>
                 <!-- <a href="" data-id="<?= $producto->idProducto ?>" class="btn-add-cart">Añadir</a> -->
-                <button data-id="<?= $producto->idProducto ?>" class="btn-add-cart" onclick="cargar(this)">Añadir</button>
+                <?php if (isset($_SESSION['idUsuario'])) : ?>
+                <button data-id="<?= $producto->idProducto ?>" class="btn-add-cart" onclick="agregarCarrito(this)">Añadir</button>
+                <?php endif; ?>
             </div>
             <?php endforeach;?> 
 
@@ -415,7 +432,9 @@
                 <p><?= $producto->descripcion ?></p>
                    <h4>S/<?= $producto->precio ?></h4>
                 <!-- <a href="" data-id="<?= $producto->idProducto ?>" class="btn-add-cart">Añadir</a> -->
-                <button data-id="<?= $producto->idProducto ?>" class="btn-add-cart" onclick="cargar(this)">Añadir</button>
+                <?php if (isset($_SESSION['idUsuario'])) : ?> <!-- Solo se muestra para los usuarios registrados -->
+                <button data-id="<?= $producto->idProducto ?>" class="btn-add-cart" onclick="agregarCarrito(this)">Añadir</button>
+                <?php endif; ?>
             </div>
             <?php endforeach;?> 
             
@@ -472,6 +491,7 @@
         </div>
     </section>
 
+    <?php if (isset($_SESSION['idUsuario'])) : ?>
     <div class="seleccion" id="seleccion">
 
         <div id="seleccionContainer" class="seleccion-container">
@@ -491,7 +511,7 @@
                     <option>4</option>
                     <option>5</option>
                 </select>
-                <select class="select-unidades">
+                <select class="select-tallas">
                     <option>S</option>
                     <option>M</option>
                     <option>L</option>
@@ -514,7 +534,8 @@
             <!-- <p id="subtotal">90</p> -->
           </span>
           <span class="envio">
-            Envío: S/20.00
+            <!-- Envío: S/20.00 -->
+            Envío: Calculado en el próximo paso
           </span>
         </div>
 
@@ -531,6 +552,8 @@
         </button>
 
     </div>
+
+    <?php endif; ?>
  
     <!-- <script>
         function showCart(x){
@@ -541,10 +564,11 @@
         }
     </script> -->
 
-    <script src="<?= constant('URL') ?>public/js/carrito.js" ></script>
-
-
     <?php require "views/footer.php"; ?>
+
+    <script src="<?= constant('URL') ?>public/js/carrito.js" ></script>
+    <!-- js para cerrar el mensaje -->
+    <script src="<?= constant('URL') ?>public/js/cerrarMensaje.js"></script>
 
 </body>
 </html>

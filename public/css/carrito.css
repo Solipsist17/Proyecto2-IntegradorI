@@ -72,7 +72,7 @@
     left: 200px
 }
 
-.select-unidades {
+.select-unidades, .select-tallas {
     position: relative;
     /* top: -2rem; */
     margin: 0 /* 170px */;
@@ -82,7 +82,7 @@
     display: inline-block;
 }
 
-.select-unidades:focus {
+.select-unidades:focus, .select-tallas:focus {
     outline: none;
 }
 

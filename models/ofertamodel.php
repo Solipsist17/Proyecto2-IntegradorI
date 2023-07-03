@@ -1,6 +1,6 @@
 <?php 
 
-class OfertaModel extends Model {
+class OfertaModel extends Model /* implements Serializable */ {
 
     public $idOferta;
     public $descuento;
@@ -10,6 +10,24 @@ class OfertaModel extends Model {
     public function __construct() {
         parent::__construct();
     }
+
+    /* public function serialize() {
+        return serialize([
+            $this->idOferta,
+            $this->descuento,
+            $this->fechaInicio,
+            $this->fechaFin
+        ]);
+    }
+
+    public function unserialize($serialized) {
+        [
+            $this->idOferta,
+            $this->descuento,
+            $this->fechaInicio,
+            $this->fechaFin
+        ] = unserialize($serialized);
+    } */
 
     public function consultarOferta($id) {
         $item = new OfertaModel();

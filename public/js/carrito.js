@@ -1,61 +1,96 @@
 let productosCarrito = []; /* Productos agregados al carrito */
 //let subtotal = 0;
 
-function cargar(item) { /* Mostramos el carrito de compras cuando se clickea en agregar carrito*/
+function cargar(item) { // Mostramos el carrito de compras cuando se clickea en agregar carrito
 
     let body = document.body;
     let mostrador = document.getElementById("producto");
-    //let banner = document.getElementById("producto-banner");
 
     let seleccion = document.getElementById("seleccion");
-    //let imgSeleccionada = document.getElementById("imgSeleccionada"); 
 
     seleccion.style.width = "40%";
     seleccion.style.opacity = "1";
 
-    body.style.overflow = "hidden"; /* Bloqueamos el scroll */
-    /* Opacamos el fondo */
+    body.style.overflow = "hidden"; // Bloqueamos el scroll
+    // Opacamos el fondo
     //mostrador.style.opacity = "0.4";
     //banner.style.opacity = "0.4";
 
-    /* Obtenemos las dimensiones y posicionamos */
+    // Obtenemos las dimensiones y posicionamos
     let posicionVertical = window.pageYOffset || document.documentElement.scrollTop;
     console.log(posicionVertical);
     seleccion.style.top = posicionVertical + "px";
 
-    console.log("dataset id: "+item.dataset.id);
-    agregarCarrito(item);    
+    let datos = {
+        id: 0,
+        accion: "cargar"
+    };
+
+    // Solicitud http
+    fetch('producto/gestionarCarrito', {
+        method: 'POST',
+        body: JSON.stringify(datos)
+    })
+    .then(response => {
+        if (!response.ok){
+            throw new Error('Error en la solicitud: ' + response.status);
+        }
+        return response.json();
+    })
+    .then(data => {
+        //let subtotal = data.subTotal;
+        productosCarrito = data.productosCarrito; // Agregamos al array para construirlo con esos datos
+        cargarArrayCarrito(data.productosCarrito, data.subtotal); /* Cargamos los datos del producto en el carrito */
+        //cargar(item); // Cargamos el carrito después de agregar el producto
+    })
+    .catch(error => {
+        console.error(error);
+    });
+
 }
 
 function agregarCarrito(item) {
+    console.log(item);
     let datos = {
         id: item.dataset.id,
         accion: "agregar"
     };
 
-    fetch('producto/agregarCarrito', {
+    fetch('producto/gestionarCarrito', {
         method: 'POST',
         body: JSON.stringify(datos)
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok){
+            throw new Error('Error en la solicitud: ' + response.status);
+        }
+        return response.json();
+    })
     .then(data => {
-        
         //let subtotal = data.subTotal;
-
         productosCarrito = data.productosCarrito; // Agregamos al array para construirlo con esos datos
-        console.log(data.productosCarrito);
+       /*  console.log(data.productosCarrito[0].precio);
+        console.log(data.subtotal); */
+        /* console.log("id: " + data.id);
+        console.log("accion: " + data.accion); */
 
         cargarArrayCarrito(data.productosCarrito, data.subtotal); /* Cargamos los datos del producto en el carrito */
+        //cargar(item); // Cargamos el carrito después de agregar el producto
+    })
+    .catch(error => {
+        console.error(error);
     });
+
 }
 
 function quitarCarrito(item) {
+    console.log(item);
     let datos = {
         id: item.dataset.id,
         accion: "quitar"
     };
 
-    fetch('../php/php-productos-carrito.php', {
+    fetch('producto/gestionarCarrito', {
         method: 'POST',
         body: JSON.stringify(datos)
     })
@@ -91,6 +126,8 @@ function cargarArrayCarrito (productosCarrito, subtotal) { // Creamos los elemen
         img.className = "producto-miniatura";
         img.src =  productosCarrito[i].imagen;
         imagenSeleccion.appendChild(img);
+        let productoOpciones = document.createElement("div");
+        productoOpciones.className = "producto-opciones";
         let selectUnidades = document.createElement("select");
         selectUnidades.className = "select-unidades";
         for (let j=0; j < 5; j++) {
@@ -98,12 +135,29 @@ function cargarArrayCarrito (productosCarrito, subtotal) { // Creamos los elemen
             option.textContent = j+1;
             selectUnidades.appendChild(option);
         }
+        productoOpciones.appendChild(selectUnidades);
+        let selectTallas = document.createElement("select");
+        selectTallas.className = "select-tallas";
+        for (let j=0; j < 3; j++) {
+            let option = document.createElement("option");
+            switch (j) {
+                case 0: option.textContent = "S";
+                break;
+                case 1: option.textContent = "M";
+                break;
+                case 2: option.textContent = "L";
+                break;
+            }
+            selectTallas.appendChild(option);
+        }
+        productoOpciones.appendChild(selectTallas);
         let productoEliminar = document.createElement("div");
         productoEliminar.className = "producto-eliminar";
         let imgEliminar = document.createElement("img");
-        imgEliminar.src = "../img/Productos/eliminar.png";
+        imgEliminar.src = "public/img/eliminar.png";
+        imgEliminar.dataset.id = productosCarrito[i].idProducto;
         imgEliminar.addEventListener("click", () => { // Al clickear se quita del carrito 
-            quitarCarrito(productosCarrito[i]); // le pasamos el producto
+            quitarCarrito(imgEliminar); // le pasamos el producto
         });
         productoEliminar.appendChild(imgEliminar);
         let precioUnitario = document.createElement("p");
@@ -112,7 +166,7 @@ function cargarArrayCarrito (productosCarrito, subtotal) { // Creamos los elemen
 
         productoSeleccion.appendChild(nombreProducto);
         productoSeleccion.appendChild(imagenSeleccion);
-        productoSeleccion.appendChild(selectUnidades);
+        productoSeleccion.appendChild(productoOpciones);
         productoSeleccion.appendChild(productoEliminar);
         productoSeleccion.appendChild(precioUnitario);
 
@@ -147,7 +201,7 @@ function cerrar() {
     let mostrador = document.getElementById("container");
     let seleccion = document.getElementById("seleccion");
     //let banner = document.getElementById("producto-banner");
-    mostrador.style.width = "100%";
+    //mostrador.style.width = "100%";
     seleccion.style.width = "0%";
     /* mostrador.style.opacity = "1";
     banner.style.opacity = "1"; */
