@@ -98,3 +98,7 @@ form input[type="reset"]:hover{
   padding-top: 0px;
   margin-top: 40px;
 }
+
+footer {
+ display: flex;
+}

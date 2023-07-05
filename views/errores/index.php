@@ -13,6 +13,7 @@
 
     <h1 style="color: red;"><?php echo $this->mensaje; ?></h1>
     <p><?php echo $this->prueba; ?></p>
+  
     
     <?php require 'views/footer.php';?>
 </body>
