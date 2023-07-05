@@ -4,7 +4,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Footer</title>
+
 	<link rel="stylesheet" type="text/css" href="public/css/footer.css">
+	<link rel="stylesheet" href="<?php echo constant('URL')?>public/css/default.css">
 </head>
 
 <body>

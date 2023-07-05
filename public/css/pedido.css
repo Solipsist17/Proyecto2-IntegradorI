@@ -1,0 +1,182 @@
+  footer{
+  position: absolute;
+  }
+
+  
+
+    .titulo{
+      font-size: 30px;
+      padding: 2%;
+      font-weight: bold;
+      color: #585F66;
+
+
+
+    
+    }
+  
+
+    .orden{
+      text-align: left;
+      font-weight: bold;
+      color: black;
+      font-size:15px;
+      margin-top: 2%;
+      margin-left: 2%;
+      background: linear-gradient(#FFCC33, #EFE066,#F2E790);
+      border-radius: 5px;
+      padding: 1.2%;
+     
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      margin-left: 2%;
+      margin-top:1%;s
+      margin-bottom: 30%;
+      max-width: 80%;
+      text-align: center;
+      border-style: solid;
+      border-radius: 10px;
+      background-color: #CACACA;
+      border-color: lightgray;
+      justify-content: space-between;
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    input{
+      border: none;
+      background-color: #CACACA;
+      color: #7A7E82;
+      height:25px;
+      text-align: center;
+    }
+
+    p {
+      margin:1%;
+
+    }
+
+    textarea{
+      margin-top: 1%;
+      text-align: center;
+      align-content: center;
+      justify-content: center;
+      border:none;
+      resize: none;
+      color: #7A7E82;
+      background-color: #CACACA;
+
+    }
+
+    .columna-1 { 
+      padding: 1%;
+      margin-block: 4%;
+      background-color: whitesmoke;
+      border: inset floralwhite;
+      border-radius: 4%;
+      margin-left: 2%;   
+    }
+    .product-img {
+      max-width:100px;
+      max-height: 100%;
+      border-radius: 5%;
+    }
+    .columna-2{
+      margin-top: 1%;
+      margin-left: 5%;
+      margin-right: 2%;
+      justify-content: center;
+      display:flex ;
+      flex-direction: column;
+    }
+    .boxc2{
+      margin-bottom: 4%;
+      font-weight: bold;
+      color: #404D5A;
+    }
+    .boxc2 .describe {
+      height: 50px;
+      width: 250px;
+     
+    }
+    .columna-3 {
+      margin-top: 1%;
+      margin-left: 5%;
+      margin-right: 2%;
+      justify-content: center;
+      display:flex ;
+      flex-direction: column;
+    }
+    .boxc3 {
+      margin-bottom: 4%;
+      font-weight: bold;
+      color: #404D5A;
+    }
+
+    .boxc3 .precio{
+
+      font-size: 20px;
+      max-width: 45%;
+      max-height:auto ;
+      font-weight: bold;
+
+    }
+    .columna-4 {
+     
+      margin-left: 1%;
+      margin-right: 4%;
+      justify-content: center;
+      align-items: center;
+      display:flex ;
+      flex-direction: column;   
+    }
+    .boxc4-1 {
+      padding: 5%;
+      margin-bottom: 10%;
+      margin-block: 5%;
+      height: 20%;
+      color: whitesmoke;
+      border:none;
+      background-color: #28B463 ;
+      border-radius: 4px;
+      font-size: 15px;
+      font-weight: bold;
+      transition: .3s ease all;
+
+    }
+
+    .boxc4-2 {
+      padding: 1%;
+      margin-bottom: 10%;
+      margin-block: 5%;
+      height: 20%;
+      color: green;
+      border:none;
+      background-color: #82E0AA;
+      border-radius: 4px;
+      font-size: 15px;
+      font-weight: bold;
+      transition: .3s ease all;
+
+    }
+
+    .boxc4-1:hover{
+      cursor: pointer;
+      background-color:#196F3D ;
+    }
+    .boxc4-2:hover{
+      cursor: pointer;
+      background-color:#58D68D ;
+    }
+
+    footer{
+      background-color: white;
+    }
+      
