@@ -13,12 +13,17 @@ class Cuenta extends Controller{
     }
 
     function render() {
-        $usuario = new UsuarioModel();
-        $idUsuario = $_SESSION['idUsuario'];
+        if (isset($_SESSION['idUsuario'])) { 
+            $usuario = new UsuarioModel();
+            $idUsuario = $_SESSION['idUsuario'];
 
-        $this->view->usuario = $usuario->consultarPorId($idUsuario);
+            $this->view->usuario = $usuario->consultarPorId($idUsuario);
 
-        $this->view->render('cuenta/index');
+            $this->view->render('cuenta/index');
+
+        } else {
+            header('Location: login');
+        }
     }
 
     /* function saludo() {

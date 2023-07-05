@@ -11,7 +11,12 @@ class Login extends Controller{
     }
 
     function render() {
-        $this->view->render('login/index');
+        // Si ya ha iniciado sesión, redirigimos a cuenta
+        if (isset($_SESSION['idUsuario'])) { 
+            header('Location: cuenta');
+        } else {
+            $this->view->render('login/index');
+        }
     }
 
     function saludo() {
