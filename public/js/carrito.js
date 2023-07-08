@@ -38,7 +38,10 @@ function cargar(item) { // Mostramos el carrito de compras cuando se clickea en 
         return response.json();
     })
     .then(data => {
+        //cargarDataForm(data);
+
         //let subtotal = data.subTotal;
+        console.log(data);
         productosCarrito = data.productosCarrito; // Agregamos al array para construirlo con esos datos
         cargarArrayCarrito(data.productosCarrito, data.subtotal); /* Cargamos los datos del producto en el carrito */
         //cargar(item); // Cargamos el carrito después de agregar el producto
@@ -67,6 +70,8 @@ function agregarCarrito(item) {
         return response.json();
     })
     .then(data => {
+        //cargarDataForm(data);
+
         //let subtotal = data.subTotal;
         productosCarrito = data.productosCarrito; // Agregamos al array para construirlo con esos datos
        /*  console.log(data.productosCarrito[0].precio);
@@ -77,9 +82,9 @@ function agregarCarrito(item) {
         cargarArrayCarrito(data.productosCarrito, data.subtotal); /* Cargamos los datos del producto en el carrito */
         //cargar(item); // Cargamos el carrito después de agregar el producto
     })
-    .catch(error => {
+    /* .catch(error => {
         console.error(error);
-    });
+    }) */;
 
 }
 
@@ -96,6 +101,8 @@ function quitarCarrito(item) {
     })
     .then(response => response.json())
     .then(data => {
+        //cargarDataForm(data);
+
         //let subtotal = data.subTotal;
         console.log(data.subtotal);
 
@@ -180,6 +187,13 @@ function cargarArrayCarrito (productosCarrito, subtotal) { // Creamos los elemen
     let spanSubTotal = document.querySelector(".subtotal");
     spanSubTotal.textContent = "";
     spanSubTotal.textContent += "SubTotal: " + "S/" + subtotal.toFixed(2);
+}
+
+function cargarDataForm(data) {
+    // Cargar el input del formulario con los datos:
+    let btnComprar = document.getElementById("datosCompra");
+    btnComprar.value = atob(data.encodedBase64);
+    console.log(btnComprar);
 }
 
 function calcularSubTotal(productosCarrito) {

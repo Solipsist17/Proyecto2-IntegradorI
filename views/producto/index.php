@@ -499,8 +499,7 @@
           <div class="producto-seleccion"> 
             <p id="nombreProducto">Lorem, ipsum dolor.</p>
             <div class="imagen-seleccion">
-              <img data-id="1" src="../img/Productos/mancuerna-20kg1.jpg" id="imgSeleccionada" class="producto-miniatura" alt="">
-              
+              <img data-id="1" src="" id="imgSeleccionada" class="producto-miniatura" alt="">
             </div>
 
             <div class="producto-opciones">
@@ -524,9 +523,8 @@
             <p class="precio-unitario">S/50.00</p>
           </div>
 
-          
-
         </div>
+
         
         <div class="calculo-precio">
           <span class="subtotal">
@@ -547,9 +545,13 @@
           &#x2715
         </div>
 
-        <button class="boton-comprar">
-          Comprar
-        </button>
+        <form id="btnComprar" action="<?php echo constant('URL')?>checkout/direccion" method="POST">
+            <input id="datosCompra" type="hidden" name="data" value="">
+            <button class="boton-comprar">
+            Comprar
+            </button>
+        </form>
+        
 
     </div>
 

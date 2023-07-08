@@ -172,6 +172,15 @@ class ProductoModel extends Model /* implements Serializable */ {
             'subtotal' => $this->calcularSubTotal($productosCarrito)
         ];
 
+        //$encodedBase64 = base64_encode(json_encode($data));
+        
+        //$data['encodedBase64'] = $encodedBase64; // Data codificada a base 64
+        //array_push($data, $encodedArray);
+        //$data = array_values($data);
+
+        $_SESSION['datosCompra'] = $data; // ESTO 
+
+
         return json_encode($data);
     }
 
