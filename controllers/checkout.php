@@ -65,6 +65,35 @@ class Checkout extends Controller {
         }
     }
 
+    function procesarPago() {
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $jsonData = file_get_contents('php://input'); // Obtener el contenido del cuerpo de la solicitud
+            $data = json_decode($jsonData, true); // Decodificar la cadena JSON en un arreglo asociativo
+            if (is_array($data)) {
+                $id_transaccion = $data['detalles']['id'];
+                $monto = $data['detalles']['purchase_units'][0]['amount']['value'];
+                $status = $data['detalles']['status'];
+                $fecha = $data['detalles']['update_time'];
+                $fecha_nueva = date('Y-m-d H:i:s', strtotime($fecha));
+                $email = $data['detalles']['payer']['email_address'];
+                $id_cliente = $data['detalles']['payer']['payer_id'];
+                
+                if ($this->model->registrarVenta(["id_transaccion" => $id_transaccion, "total" => $monto, "fecha" => $fecha_nueva, "status" => $status, "email" => $email, "id_cliente" => $id_cliente])) {
+                    // Aquí registrar la dirección con los datos y el pedido con esta id
+                    $_SESSION['mensaje'] = "Venta exitosa!";
+                } else {
+                    $_SESSION['mensaje'] = "Error";
+                }
+                $prueba = [
+                    "prueba1" => "prueba1"
+                ];
+                echo json_encode($prueba);
+                exit();
+            }
+            
+        }
+    }
+
     function registrarUsuario() {
         //session_start(); ////////
         $username = $_POST['username'];

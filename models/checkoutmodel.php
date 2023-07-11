@@ -59,6 +59,15 @@ class CheckoutModel extends Model {
         }
     }
 
+    public function registrarVenta($datos) {
+        $venta = new VentaModel();
+        if ($venta->registrar(["id_transaccion" => $datos['id_transaccion'], "total" => $datos['total'], "fecha" => $datos['fecha'], "status" => $datos['status'], "email" => $datos['email'], "id_cliente" => $datos['id_cliente']])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 }
 

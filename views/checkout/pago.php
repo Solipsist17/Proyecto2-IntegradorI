@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="<?php echo constant('URL')?>public/css/default.css">
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/header.css">
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/footer.css">
-    <link rel="stylesheet" href="<?= constant('URL') ?>public/css/resumen_compra.css">
+    <link rel="stylesheet" href="<?= constant('URL') ?>public/css/pago.css">
     <title>Pago</title>
 </head>
 <body>
@@ -14,8 +14,6 @@
 
     <!-- <h1 style="color: red;"><?php echo $this->mensaje; ?></h1>
     <p><?php echo $this->prueba; ?></p> -->
-
-    <h1>Pago</h1>
     <!-- El comprobante de pago por defecto será la boleta -->
     <!-- <form action="">
         <label for="">¿Qué tipo de comprobante desea?</label>
@@ -25,6 +23,15 @@
         <input type="radio" name="comprobante" id="factura">
     </form> -->
     <h3>Resumen de la compra: </h3>
+    <p><?php  
+      if (isset($_SESSION['mensaje'])) {
+        //header('Location: ' . constant('URL') . 'checkout/pago');
+        echo $_SESSION['mensaje'];
+        unset($_SESSION['mensaje']);
+      }
+      
+      
+    ?></p>
     <div class="seleccion" id="seleccion">
 
         <div id="seleccionContainer" class="seleccion-container">
@@ -132,13 +139,17 @@
             Comprar
             </button>
         </form>  -->
-
     </div>
 
-    <!-- Replace "test" with your own sandbox Business account app client ID -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AZ6j9jFfDVqT9j9qLg37aFMk7s19s0xl7XWkpD8eGjVeZ02W2FHDBmqdj6fLQLSO92IY8EeVLd46iz_R&currency=USD"></script>
     <!-- Set up a container element for the button -->
-    <div id="paypal-button-container"></div>
+    <div class="paypal-btn">
+      <div id="paypal-button-container"></div>
+    </div>
+    
+
+    <!-- Replace "test" with your own sandbox Business account app client ID -->
+    <script src="https://www.paypal.com/sdk/js?client-id=<?=constant('CLIENT_ID')?>&currency=<?=constant('CURRENCY')?>"></script>
+    
     <script>
         paypal.Buttons({
             style:{
@@ -150,7 +161,7 @@
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
-                            value: 100
+                            value: <?= $_SESSION['datosCompra']['subtotal']?>
                         }
                     }]
                 });
@@ -158,7 +169,25 @@
             onApprove: function(data, actions) {
                 actions.order.capture().then(function (detalles){
                     console.log(detalles);
-                    window.location.href = "completado.html";
+                    //window.location.href = "completado.html";
+                    return fetch('procesarPago', {
+                      method: 'POST',
+                      headers: {
+                        'content-type' : 'application/json'
+                      },
+                      body: JSON.stringify({
+                        detalles: detalles
+                      })
+                    })
+                    .then(response => {
+                      if (!response.ok){
+                          throw new Error('Error en la solicitud: ' + response.status);
+                      }
+                      return response.json();
+                    })
+                    .then(data => {
+                      console.log(data);
+                    })
                 });
             },
             onCancel: function(data) {
@@ -166,55 +195,9 @@
                 console.log(data);
             }
         }).render('#paypal-button-container');
-        /* paypal.Buttons({
-        // Order is created on the server and the order id is returned
-        createOrder() {
-          return fetch("/my-server/create-paypal-order", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            // use the "body" param to optionally pass additional order information
-            // like product skus and quantities
-            body: JSON.stringify({
-              cart: [
-                {
-                  sku: "YOUR_PRODUCT_STOCK_KEEPING_UNIT",
-                  quantity: "YOUR_PRODUCT_QUANTITY",
-                },
-              ],
-            }),
-          })
-          .then((response) => response.json())
-          .then((order) => order.id);
-        },
-        // Finalize the transaction on the server after payer approval
-        onApprove(data) {
-          return fetch("/my-server/capture-paypal-order", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              orderID: data.orderID
-            })
-          })
-          .then((response) => response.json())
-          .then((orderData) => {
-            // Successful capture! For dev/demo purposes:
-            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-            const transaction = orderData.purchase_units[0].payments.captures[0];
-            alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
-            // When ready to go live, remove the alert and show a success message within this page. For example:
-            // const element = document.getElementById('paypal-button-container');
-            // element.innerHTML = '<h3>Thank you for your payment!</h3>';
-            // Or go to another URL:  window.location.href = 'thank_you.html';
-          });
-        }
-      }).render('#paypal-button-container'); */
     </script>
 
-    <p>Datos de la dirección guardados en sesión: <?php var_dump($_SESSION['direccion']); ?></p>
+    <!-- <p>Datos de la dirección guardados en sesión: <?php var_dump($_SESSION['direccion']); ?></p> -->
   
     
     <?php require 'views/footer.php';?>

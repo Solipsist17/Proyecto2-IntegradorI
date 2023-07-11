@@ -172,6 +172,7 @@
     justify-content: center;
 }
 
-/* .paypal-button-container paypal-button-layout-vertical paypal-button-shape-pill paypal-button-number-multiple paypal-button-env-sandbox {
-    margin: 5rem auto;
-} */
+.paypal-btn {
+    width: 50%;
+    margin: 4rem auto;
+}
