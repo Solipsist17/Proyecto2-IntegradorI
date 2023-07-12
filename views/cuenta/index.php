@@ -14,15 +14,28 @@
   <body>
     <?php require "views/header.php"; ?>
 
-    <h1>Mi cuenta</h1>
-
+    <div class="Account">Mi cuenta 
+      <p class="subtitle">¡Bienvenido querido Usuario, aquí podras visualizar y editar los datos de cuenta! </p>
+      </div>
+    
     <form action="<?php echo constant('URL'); ?>usuario/modificarUsuario" method="POST">
 
-      <ul>
-    
+      
+
+      <div class="content-box">
+
+        <div class="basicI">
+          <img src="public/img/ajuste.png">
+        </div>
+
+
+      <ul class="content-data">
+
+        <div class="Title">Basic Information</div>
+  
       <li>
         <label for="username">Username</label>
-        <ul>
+        <ul class="inpunt-global">
         <input id="username" name="username" type="text" placeholder="Ingrese el Nombre de Usuario" value="<?= $this->usuario->username ?>" required>
         </ul>
       </li>
@@ -71,6 +84,8 @@
         </ul>
       </li>
     </ul>
+
+    </div>
         
     <ul>
       <div class="modifier">
@@ -82,7 +97,6 @@
 
     <form action="<?php echo constant('URL'); ?>usuario/cerrarSesion" method="POST">
       <div class="cerrar" id="Cerrar">
-        <label for="logout">Cerrar sesión :</label>
         <input class="close" id="logout" type="submit" value="Cerrar sesión">
       </div>
 

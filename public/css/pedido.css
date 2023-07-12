@@ -1,21 +1,14 @@
-  footer{
-  position: absolute;
-  }
-
-  
+     footer{
+      position: absolute;
+    }
 
     .titulo{
       font-size: 30px;
       padding: 2%;
       font-weight: bold;
       color: #585F66;
-
-
-
-    
     }
   
-
     .orden{
       text-align: left;
       font-weight: bold;
