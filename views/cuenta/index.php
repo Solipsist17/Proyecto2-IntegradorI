@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="<?= constant('URL') ?>public/css/cuenta.css">
     
     <!-- <link rel="stylesheet" href="<?= constant('URL') ?>public/css/estilo_registro.css"> -->
-
+ 
   </head>
   <body>
     <?php require "views/header.php"; ?>
