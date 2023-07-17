@@ -61,7 +61,16 @@ class CheckoutModel extends Model {
 
     public function registrarVenta($datos) {
         $venta = new VentaModel();
-        if ($venta->registrar(["id_transaccion" => $datos['id_transaccion'], "total" => $datos['total'], "fecha" => $datos['fecha'], "status" => $datos['status'], "email" => $datos['email'], "id_cliente" => $datos['id_cliente']])) {
+        if (($lastInsertId = $venta->registrar(["id_transaccion" => $datos['id_transaccion'], "total" => $datos['total'], "fecha" => $datos['fecha'], "status" => $datos['status'], "email" => $datos['email'], "id_cliente" => $datos['id_cliente']])) != null) {
+            return $lastInsertId;
+        } else {
+            return null;
+        }
+    }
+
+    public function registrarPedido($datos) {
+        $pedido = new PedidoModel();
+        if ($pedido->registrar(["calle" => $datos['calle'], "direccion" => $datos['direccion'], "ciudad" => $datos['ciudad'], "cod_pais" => $datos['cod_pais'], "cod_postal" => $datos['cod_postal'], "nombre" => $datos['nombre'], "idVenta" => $datos['idVenta']])) {
             return true;
         } else {
             return false;

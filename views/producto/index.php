@@ -545,7 +545,7 @@
           &#x2715
         </div>
 
-        <form id="btnComprar" action="<?php echo constant('URL')?>checkout/direccion" method="POST">
+        <form id="btnComprar" action="<?php echo constant('URL')?>checkout/pago" method="POST">
             <input id="datosCompra" type="hidden" name="data" value="">
             <button class="boton-comprar">
             Comprar

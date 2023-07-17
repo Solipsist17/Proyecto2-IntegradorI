@@ -70,6 +70,7 @@ class Checkout extends Controller {
             $jsonData = file_get_contents('php://input'); // Obtener el contenido del cuerpo de la solicitud
             $data = json_decode($jsonData, true); // Decodificar la cadena JSON en un arreglo asociativo
             if (is_array($data)) {
+                // Datos de venta
                 $id_transaccion = $data['detalles']['id'];
                 $monto = $data['detalles']['purchase_units'][0]['amount']['value'];
                 $status = $data['detalles']['status'];
@@ -77,18 +78,48 @@ class Checkout extends Controller {
                 $fecha_nueva = date('Y-m-d H:i:s', strtotime($fecha));
                 $email = $data['detalles']['payer']['email_address'];
                 $id_cliente = $data['detalles']['payer']['payer_id'];
+
+                // Datos de envío
+                $envio_calle = $data['detalles']['purchase_units'][0]['shipping']['address']['address_line_1'];
+                $envio_direccion = $data['detalles']['purchase_units'][0]['shipping']['address']['admin_area_1'];
+                $envio_ciudad = $data['detalles']['purchase_units'][0]['shipping']['address']['admin_area_2'];
+                $codigo_pais = $data['detalles']['purchase_units'][0]['shipping']['address']['country_code'];
+                $codigo_postal = $data['detalles']['purchase_units'][0]['shipping']['address']['postal_code'];
+                $envio_nombre = $data['detalles']['purchase_units'][0]['shipping']['name']['full_name'];
                 
-                if ($this->model->registrarVenta(["id_transaccion" => $id_transaccion, "total" => $monto, "fecha" => $fecha_nueva, "status" => $status, "email" => $email, "id_cliente" => $id_cliente])) {
+                /* if ($this->model->registrarVenta(["id_transaccion" => $id_transaccion, "total" => $monto, "fecha" => $fecha_nueva, "status" => $status, "email" => $email, "id_cliente" => $id_cliente])) {
                     // Aquí registrar la dirección con los datos y el pedido con esta id
+
                     $_SESSION['mensaje'] = "Venta exitosa!";
                 } else {
                     $_SESSION['mensaje'] = "Error";
+                } */
+                if (($lastInsertId = $this->model->registrarVenta(["id_transaccion" => $id_transaccion, "total" => $monto, "fecha" => $fecha_nueva, "status" => $status, "email" => $email, "id_cliente" => $id_cliente])) !== null) {
+                    //echo $lastInsertId;
+
+                    // Aquí registrar el pedido con el id de la venta
+                    if ($this->model->registrarPedido(["calle" => $envio_calle, "direccion" => $envio_direccion, "ciudad" => $envio_ciudad, "cod_pais" => $codigo_pais, "cod_postal" => $codigo_postal, "nombre" => $envio_nombre, "idVenta" => $lastInsertId])) {
+                        $_SESSION['mensaje'] = "Venta exitosa!";
+                        
+                        $prueba = [
+                            "bien" => "bien"
+                        ];
+
+                        // Aquí redirigir a otra página
+                    } else {
+                        $prueba = [
+                            "error" => $lastInsertId
+                        ];
+                    } 
+                    
+                } else {
+                    $_SESSION['mensaje'] = "Error";
+                    
                 }
-                $prueba = [
-                    "prueba1" => "prueba1"
-                ];
+
                 echo json_encode($prueba);
-                exit();
+                    exit();
+                
             }
             
         }
