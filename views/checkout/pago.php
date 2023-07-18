@@ -198,7 +198,7 @@
     </script>
 
     <!-- <p>Datos de la dirección guardados en sesión: <?php var_dump($_SESSION['direccion']); ?></p> -->
-  
+    <script src="<?= constant('URL') ?>public/js/pago.js"></script>
     
     <?php require 'views/footer.php';?>
 </body>
