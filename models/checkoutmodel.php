@@ -4,6 +4,7 @@ include_once 'models/productomodel.php';
 include_once 'models/direccionmodel.php';
 include_once 'models/pedidomodel.php';
 include_once 'models/ventamodel.php';
+include_once 'models/detalleventamodel.php';
 
 class CheckoutModel extends Model {
 
@@ -71,6 +72,15 @@ class CheckoutModel extends Model {
     public function registrarPedido($datos) {
         $pedido = new PedidoModel();
         if ($pedido->registrar(["calle" => $datos['calle'], "direccion" => $datos['direccion'], "ciudad" => $datos['ciudad'], "cod_pais" => $datos['cod_pais'], "cod_postal" => $datos['cod_postal'], "nombre" => $datos['nombre'], "idVenta" => $datos['idVenta']])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function registrarDetalleVenta($datos) {
+        $detalleVenta = new DetalleVentaModel();
+        if ($detalleVenta->registrar(["cantidad" => $datos['cantidad'], "precioUnitario" => $datos['precioUnitario'], "subtotal" => $datos['subtotal'], "idVenta" => $datos['idVenta'], "idProducto" => $datos['idProducto']])) {
             return true;
         } else {
             return false;

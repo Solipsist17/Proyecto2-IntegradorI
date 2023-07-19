@@ -22,6 +22,10 @@ class Checkout extends Controller {
         $this->view->render('checkout/pago');
     }
 
+    function completado() {
+        $this->view->render('checkout/completado');
+    }
+
     function verificarDireccion() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             /* include_once 'models/productomodel.php';
@@ -87,38 +91,62 @@ class Checkout extends Controller {
                 $codigo_postal = $data['detalles']['purchase_units'][0]['shipping']['address']['postal_code'];
                 $envio_nombre = $data['detalles']['purchase_units'][0]['shipping']['name']['full_name'];
                 
-                /* if ($this->model->registrarVenta(["id_transaccion" => $id_transaccion, "total" => $monto, "fecha" => $fecha_nueva, "status" => $status, "email" => $email, "id_cliente" => $id_cliente])) {
-                    // Aquí registrar la dirección con los datos y el pedido con esta id
-
-                    $_SESSION['mensaje'] = "Venta exitosa!";
-                } else {
-                    $_SESSION['mensaje'] = "Error";
-                } */
+                // Registramos la venta
                 if (($lastInsertId = $this->model->registrarVenta(["id_transaccion" => $id_transaccion, "total" => $monto, "fecha" => $fecha_nueva, "status" => $status, "email" => $email, "id_cliente" => $id_cliente])) !== null) {
-                    //echo $lastInsertId;
 
                     // Aquí registrar el pedido con el id de la venta
                     if ($this->model->registrarPedido(["calle" => $envio_calle, "direccion" => $envio_direccion, "ciudad" => $envio_ciudad, "cod_pais" => $codigo_pais, "cod_postal" => $codigo_postal, "nombre" => $envio_nombre, "idVenta" => $lastInsertId])) {
                         $_SESSION['mensaje'] = "Venta exitosa!";
-                        
-                        $prueba = [
-                            "bien" => "bien"
-                        ];
-
-                        // Aquí redirigir a otra página
                     } else {
-                        $prueba = [
+                        /* $prueba = [
                             "error" => $lastInsertId
-                        ];
+                        ]; */
+                    }
+
+                    // Aquí registrar el detalleVenta
+                    // falta registrar la cantidad por cada producto
+                    include_once 'models/productomodel.php';
+                    include_once 'models/categoriamodel.php';
+                    include_once 'models/ofertamodel.php';
+                    session_write_close();
+                    session_start();
+                    
+                    $productos = isset($_SESSION['datosCompra']['productosCarrito']) ? $_SESSION['datosCompra']['productosCarrito'] : []; 
+                    $prueba = [];
+
+                    foreach ($productos as $producto) {
+                        $idProducto = $producto->idProducto;
+                        $precio = $producto->precio; 
+                        $cantidad = 1;
+                        $subtotal = $precio*$cantidad;
+                        if ($this->model->registrarDetalleVenta(["cantidad" => $cantidad, "precioUnitario" => $precio, "subtotal" => $subtotal, "idVenta" => $lastInsertId, "idProducto" => $idProducto])) {
+                            
+                            //$prueba['clave'] = "bien";
+                            $prueba = [
+                                "bien" => "bien"
+                            ];
+
+                            
+                            
+                        } else {
+                            $prueba['clave'] = "mal";
+                            //array_push($prueba, "mal");
+                        }
                     } 
+                    
                     
                 } else {
                     $_SESSION['mensaje'] = "Error";
                     
                 }
 
+                // Redirigimos a otra página
+                //header('Location: ' . constant('URL') . 'producto');
+                // ELiminamos los datos de la compra y carrito de sesión
+
                 echo json_encode($prueba);
-                    exit();
+                
+                exit();
                 
             }
             

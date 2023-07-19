@@ -180,13 +180,14 @@
                       })
                     })
                     .then(response => {
-                      if (!response.ok){
+                      /* if (!response.ok){
                           throw new Error('Error en la solicitud: ' + response.status);
                       }
-                      return response.json();
+                      return  */response.json();
                     })
                     .then(data => {
                       console.log(data);
+                      
                     })
                 });
             },
@@ -197,7 +198,16 @@
         }).render('#paypal-button-container');
     </script>
 
-    <!-- <p>Datos de la dirección guardados en sesión: <?php var_dump($_SESSION['direccion']); ?></p> -->
+    <!-- <?php 
+        session_write_close();
+        include_once 'models/productomodel.php';
+        include_once 'models/categoriamodel.php';
+        include_once 'models/ofertamodel.php';
+        
+        //session_start();
+    ?>
+    <p>Datos de la compra guardados en sesión: <?php var_dump($_SESSION['datosCompra']['productosCarrito']); ?></p> -->
+
     <script src="<?= constant('URL') ?>public/js/pago.js"></script>
     
     <?php require 'views/footer.php';?>
