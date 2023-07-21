@@ -180,14 +180,14 @@
                       })
                     })
                     .then(response => {
-                      /* if (!response.ok){
+                      if (!response.ok){
                           throw new Error('Error en la solicitud: ' + response.status);
                       }
-                      return  */response.json();
+                      return response.json();
                     })
                     .then(data => {
                       console.log(data);
-                      
+                      window.location.href = "completado"; // Redirigimos a otra página
                     })
                 });
             },

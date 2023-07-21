@@ -23,6 +23,8 @@ function cargar(item) { // Mostramos el carrito de compras cuando se clickea en 
 
     let datos = {
         id: 0,
+        unidades: 0,
+        talla: 0,
         accion: "cargar"
     };
 
@@ -39,16 +41,13 @@ function cargar(item) { // Mostramos el carrito de compras cuando se clickea en 
     })
     .then(data => {
         //cargarDataForm(data);
-
-        //let subtotal = data.subTotal;
         console.log(data);
         productosCarrito = data.productosCarrito; // Agregamos al array para construirlo con esos datos
         cargarArrayCarrito(data.productosCarrito, data.subtotal); /* Cargamos los datos del producto en el carrito */
-        //cargar(item); // Cargamos el carrito después de agregar el producto
     })
-    .catch(error => {
+    /* .catch(error => {
         console.error(error);
-    });
+    }) */;
 
 }
 
@@ -56,6 +55,8 @@ function agregarCarrito(item) {
     console.log(item);
     let datos = {
         id: item.dataset.id,
+        unidades: 1,
+        talla: 1,
         accion: "agregar"
     };
 
@@ -71,16 +72,9 @@ function agregarCarrito(item) {
     })
     .then(data => {
         //cargarDataForm(data);
-
-        //let subtotal = data.subTotal;
+        console.log(data);
         productosCarrito = data.productosCarrito; // Agregamos al array para construirlo con esos datos
-       /*  console.log(data.productosCarrito[0].precio);
-        console.log(data.subtotal); */
-        /* console.log("id: " + data.id);
-        console.log("accion: " + data.accion); */
-
         cargarArrayCarrito(data.productosCarrito, data.subtotal); /* Cargamos los datos del producto en el carrito */
-        //cargar(item); // Cargamos el carrito después de agregar el producto
     })
     /* .catch(error => {
         console.error(error);
@@ -92,6 +86,8 @@ function quitarCarrito(item) {
     console.log(item);
     let datos = {
         id: item.dataset.id,
+        unidades: 1,
+        talla: 1,
         accion: "quitar"
     };
 
@@ -102,14 +98,8 @@ function quitarCarrito(item) {
     .then(response => response.json())
     .then(data => {
         //cargarDataForm(data);
-
-        //let subtotal = data.subTotal;
-        console.log(data.subtotal);
-
+        console.log(data);
         productosCarrito = data.productosCarrito; // Agregamos al array para construirlo con esos datos
-        console.log("Tamaño del array carrito" + productosCarrito.length);
-        console.log(data.productosCarrito);
-
         cargarArrayCarrito(data.productosCarrito, data.subtotal); /* Cargamos los datos del producto en el carrito */
     });
 }
@@ -119,6 +109,8 @@ function cargarArrayCarrito (productosCarrito, subtotal) { // Creamos los elemen
     seleccionContainer.innerHTML = ""; // Limpiamos el contenedor 
     for (let i=0; i < productosCarrito.length; i++) {
         console.log("iteracion: "+i);
+        console.log("Tallas disponibles: " + productosCarrito[i].tallasDisponibles);
+        console.log("Cantidad de tallas disponibles: " + productosCarrito[i].tallasDisponibles.length);
 
         let productoSeleccion = document.createElement("div");
         productoSeleccion.className = "producto-seleccion";
@@ -137,27 +129,63 @@ function cargarArrayCarrito (productosCarrito, subtotal) { // Creamos los elemen
         productoOpciones.className = "producto-opciones";
         let selectUnidades = document.createElement("select");
         selectUnidades.className = "select-unidades";
-        for (let j=0; j < 5; j++) {
+        selectUnidades.dataset.id = productosCarrito[i].idProducto; // id del producto
+        for (let j=1; j <= 5; j++) {
             let option = document.createElement("option");
-            option.textContent = j+1;
+            option.textContent = j;
+            if (j === productosCarrito[i].unidades) { // seleccionamos la opción de unidades
+                option.selected = j;
+            }
             selectUnidades.appendChild(option);
         }
+        // Asignar evento onchange al select
+        selectUnidades.onchange = function() {
+            seleccionarUnidades(this.options[this.selectedIndex], selectUnidades.dataset.id, productosCarrito[i].talla);
+        };
         productoOpciones.appendChild(selectUnidades);
-        let selectTallas = document.createElement("select");
-        selectTallas.className = "select-tallas";
-        for (let j=0; j < 3; j++) {
-            let option = document.createElement("option");
-            switch (j) {
-                case 0: option.textContent = "S";
-                break;
-                case 1: option.textContent = "M";
-                break;
-                case 2: option.textContent = "L";
-                break;
-            }
-            selectTallas.appendChild(option);
+
+        if (productosCarrito[i].tallasDisponibles.length > 0) {
+            let selectTallas = document.createElement("select");
+            selectTallas.className = "select-tallas";
+            /* for (let j=1; j <= 3; j++) {
+                let option = document.createElement("option");
+                switch (j) {
+                    case 1: option.textContent = "S";
+                    break;
+                    case 2: option.textContent = "M";
+                    break;
+                    case 3: option.textContent = "L";
+                    break;
+                }
+                selectTallas.appendChild(option);
+            } */
+            selectTallas.dataset.id = productosCarrito[i].idProducto; // id del producto
+            productosCarrito[i].tallasDisponibles.forEach((talla, index) => {
+                let option = document.createElement("option");
+                switch (talla) {
+                    case 1: option.textContent = "S"; 
+                    break;
+                    case 2: option.textContent = "M";
+                    break;
+                    case 3: option.textContent = "L";
+                    break;
+                }
+
+                if ((index+1) === productosCarrito[i].talla) { // seleccionamos la opción de tallas
+                    option.selected = (index+1);
+                    console.log("opción seleccionada: " + (index+1));
+                }
+
+                selectTallas.appendChild(option);
+            });
+
+            // Asignar evento onchange al select
+            selectTallas.onchange = function() {
+            seleccionarTallas(this.options[this.selectedIndex], selectTallas.dataset.id, productosCarrito[i].unidades);
+        };
+            productoOpciones.appendChild(selectTallas);
         }
-        productoOpciones.appendChild(selectTallas);
+
         let productoEliminar = document.createElement("div");
         productoEliminar.className = "producto-eliminar";
         let imgEliminar = document.createElement("img");
@@ -169,7 +197,9 @@ function cargarArrayCarrito (productosCarrito, subtotal) { // Creamos los elemen
         productoEliminar.appendChild(imgEliminar);
         let precioUnitario = document.createElement("p");
         precioUnitario.className = "precio-unitario";
-        precioUnitario.textContent = "S/" + productosCarrito[i].precio;
+        let precio = productosCarrito[i].precio * productosCarrito[i].unidades;
+        precio = precio.toFixed(2);
+        precioUnitario.textContent = "S/" + (precio);
 
         productoSeleccion.appendChild(nombreProducto);
         productoSeleccion.appendChild(imagenSeleccion);
@@ -187,6 +217,64 @@ function cargarArrayCarrito (productosCarrito, subtotal) { // Creamos los elemen
     let spanSubTotal = document.querySelector(".subtotal");
     spanSubTotal.textContent = "";
     spanSubTotal.textContent += "SubTotal: " + "S/" + subtotal.toFixed(2);
+}
+
+function seleccionarUnidades(e, id, talla) {
+    // Aquí actualizar los precios con las unidades
+    console.log("Se seleccionó la unidad: " + e.value);
+    let datos = {
+        id: id, // Este es el problema, el id tiene que ser el que le corresponde al producto
+        unidades: e.value,
+        talla, talla,
+        accion: "modificar"
+    };
+
+    httpRequest(datos);
+}
+
+function seleccionarTallas(e, id, unidades) {
+    let talla = e.value;
+    switch (talla) {
+        case "S": talla = 1; 
+        break;
+        case "M": talla = 2;
+        break;
+        case "L": talla = 3;
+        break;
+    }
+    // Aquí actualizar los precios con las unidades
+    console.log("Se seleccionó la talla: " + talla);
+    let datos = {
+        id: id,
+        unidades: unidades,
+        talla: talla,
+        accion: "modificar"
+    };
+
+    httpRequest(datos);
+}
+
+function httpRequest(datos) {
+    // Solicitud http
+    fetch('producto/gestionarCarrito', {
+        method: 'POST',
+        body: JSON.stringify(datos)
+    })
+    .then(response => {
+        if (!response.ok){
+            throw new Error('Error en la solicitud: ' + response.status);
+        }
+        return response.json();
+    })
+    .then(data => {
+        
+        console.log(data);
+        productosCarrito = data.productosCarrito; // Agregamos al array para construirlo con esos datos
+        cargarArrayCarrito(data.productosCarrito, data.subtotal); /* Cargamos los datos del producto en el carrito */
+    })
+    /* .catch(error => {
+        console.error(error);
+    }) */;
 }
 
 function cargarDataForm(data) {

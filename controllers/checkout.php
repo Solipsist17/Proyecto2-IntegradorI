@@ -79,6 +79,7 @@ class Checkout extends Controller {
                 $monto = $data['detalles']['purchase_units'][0]['amount']['value'];
                 $status = $data['detalles']['status'];
                 $fecha = $data['detalles']['update_time'];
+                date_default_timezone_set('America/Lima');
                 $fecha_nueva = date('Y-m-d H:i:s', strtotime($fecha));
                 $email = $data['detalles']['payer']['email_address'];
                 $id_cliente = $data['detalles']['payer']['payer_id'];
@@ -117,32 +118,51 @@ class Checkout extends Controller {
                     foreach ($productos as $producto) {
                         $idProducto = $producto->idProducto;
                         $precio = $producto->precio; 
-                        $cantidad = 1;
+                        $cantidad = $producto->unidades;
                         $subtotal = $precio*$cantidad;
+
+                        $stock = 0;
+                        $stockActual = 0;
+
                         if ($this->model->registrarDetalleVenta(["cantidad" => $cantidad, "precioUnitario" => $precio, "subtotal" => $subtotal, "idVenta" => $lastInsertId, "idProducto" => $idProducto])) {
                             
                             //$prueba['clave'] = "bien";
+                            
+                            
+                        } /* else {
+                            
+                            //array_push($prueba, "mal");
+                        } */
+
+                        // Actualizar el inventario
+                        // primero consultar el inventario
+                        include_once 'models/inventariomodel.php';
+                        session_write_close();
+                        session_start();
+                        $idTalla = $producto->talla; // Talla 
+                        $inventario = $this->model->consultarInventario(["idProducto" => $idProducto, "idTalla" => $idTalla]);
+                        
+                        $stock = $inventario->stock; 
+                        $stockActual = $stock - $cantidad;
+                        
+                        if ($this->model->actualizarInventario(["stock" => $stockActual, "idProducto" => $idProducto, "idTalla" => $idTalla])) {
                             $prueba = [
                                 "bien" => "bien"
                             ];
-
-                            
-                            
                         } else {
-                            $prueba['clave'] = "mal";
-                            //array_push($prueba, "mal");
+                            $prueba = [ 
+                                "mal" => "mal"
+                            ];
                         }
                     } 
-                    
-                    
+
                 } else {
                     $_SESSION['mensaje'] = "Error";
-                    
                 }
-
-                // Redirigimos a otra página
-                //header('Location: ' . constant('URL') . 'producto');
+                
                 // ELiminamos los datos de la compra y carrito de sesión
+                unset($_SESSION['datosCompra']);
+                unset($_SESSION['productosCarrito']);
 
                 echo json_encode($prueba);
                 

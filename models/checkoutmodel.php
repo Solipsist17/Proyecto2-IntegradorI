@@ -5,12 +5,14 @@ include_once 'models/direccionmodel.php';
 include_once 'models/pedidomodel.php';
 include_once 'models/ventamodel.php';
 include_once 'models/detalleventamodel.php';
+include_once 'models/inventariomodel.php';
 
 class CheckoutModel extends Model {
 
     public $direccion; // idDireccion
     public $pedido; // idPedido
     public $venta; // idVenta
+    public $detalleVenta;
 
     public function __construct() {
         parent::__construct();
@@ -85,6 +87,21 @@ class CheckoutModel extends Model {
         } else {
             return false;
         }
+    }
+
+    public function actualizarInventario($datos) {
+        $inventario = new InventarioModel();
+        if ($inventario->actualizar(["stock" => $datos['stock'], "idProducto" => $datos['idProducto'], "idTalla" => $datos['idTalla']])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function consultarInventario($datos) {
+        $inventario = new InventarioModel();
+        $item = $inventario->consultarPorIds(["idProducto" => $datos['idProducto'], "idTalla" => $datos['idTalla']]);
+        return $item;
     }
 
 

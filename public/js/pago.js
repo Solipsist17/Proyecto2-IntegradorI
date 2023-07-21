@@ -1,5 +1,7 @@
 let datos = {
     id: 0,
+    unidades: 1,
+    talla: 0,
     accion: "cargar"
 };
 
@@ -23,9 +25,9 @@ fetch('../producto/gestionarCarrito', {
     cargarArrayCarrito(data.productosCarrito, data.subtotal); /* Cargamos los datos del producto en el carrito */
     //cargar(item); // Cargamos el carrito después de agregar el producto
 })
-.catch(error => {
+/* .catch(error => {
     console.error(error);
-});
+}) */;
 
 function cargarArrayCarrito (productosCarrito, subtotal) { // Creamos los elementos del array carrito 
     let seleccionContainer = document.getElementById("seleccionContainer"); 
@@ -82,7 +84,9 @@ function cargarArrayCarrito (productosCarrito, subtotal) { // Creamos los elemen
         productoEliminar.appendChild(imgEliminar);
         let precioUnitario = document.createElement("p");
         precioUnitario.className = "precio-unitario";
-        precioUnitario.textContent = "S/" + productosCarrito[i].precio;
+        let precio = productosCarrito[i].precio * productosCarrito[i].unidades;
+        precio = precio.toFixed(2);
+        precioUnitario.textContent = "S/" + (precio);
 
         productoSeleccion.appendChild(nombreProducto);
         productoSeleccion.appendChild(imagenSeleccion);

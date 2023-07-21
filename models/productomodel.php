@@ -3,7 +3,7 @@
 include_once 'models/categoriamodel.php';
 include_once 'models/ofertamodel.php';
 
-class ProductoModel extends Model /* implements Serializable */ {
+class ProductoModel extends Model {
 
     public $idProducto;
     public $nombre;
@@ -16,30 +16,6 @@ class ProductoModel extends Model /* implements Serializable */ {
     public function __construct() {
         parent::__construct();
     }
-
-    /* public function serialize() {
-        return serialize([
-            $this->idProducto,
-            $this->nombre,
-            $this->precio,
-            $this->descripcion,
-            $this->imagen,
-            $this->categoria,
-            $this->oferta
-        ]);
-    }
-
-    public function unserialize($serialized) {
-        [
-            $this->idProducto,
-            $this->nombre,
-            $this->precio,
-            $this->descripcion,
-            $this->imagen,
-            $this->categoria,
-            $this->oferta
-        ] = unserialize($serialized);
-    } */
 
     public function consultarPorId($id) {
         $item = new ProductoModel();
@@ -131,8 +107,10 @@ class ProductoModel extends Model /* implements Serializable */ {
                 $descuento = $oferta->consultarOferta($producto->oferta->idOferta);
                 $elemento->precio = $elemento->precio * (1 - $descuento);
             } */
+            $unidades = $elemento->unidades;
+            $precio = $elemento->precio;
             
-            $subtotal += $elemento->precio;
+            $subtotal += ($unidades * $precio);
         }
         return $subtotal;
     }
@@ -149,22 +127,82 @@ class ProductoModel extends Model /* implements Serializable */ {
 
         $id = $data['id'];
         $accion = $data['accion'];
+        $unidades = intval($data['unidades']);
+        $talla = $data['talla'];
 
         if ($accion == "agregar") {
             $producto = $this->consultarPorId($id);
-            if (!in_array($producto, $productosCarrito)) { // verificamos si no existe en el array carrito
+            //if (!in_array($producto, $productosCarrito)) { // verificamos si no existe en el array carrito
+            $existe = false;
+            foreach ($productosCarrito as $elemento) { 
+                if ($elemento->idProducto == $id) { // Verificamos si existe 
+                    $existe=true;
+                }    
+            }
+            if (!$existe) { // si no existe entonces lo agregamos
+                // Consultamos las tallas y stock disponibles de ese producto
+                include_once 'models/inventariomodel.php';
+                include_once 'models/tallamodel.php';
+                $inventario = new InventarioModel();
+                $inventarios = [];
+                $inventarios = $inventario->consultarPorIdProducto($id);
+                $tallasDisponibles = [];
+                foreach ($inventarios as $inventario) {
+                    if (isset($inventario->talla->idTalla) && $inventario->stock > 0) {
+                        array_push($tallasDisponibles, $inventario->talla->idTalla);
+                    }
+                }
+                $producto->tallasDisponibles = $tallasDisponibles; // agregamos las tallas
+                $producto->unidades = $unidades; // agregamos las unidades
+                $producto->talla = $talla; // agregamos la talla seleccionada
+
                 array_push($productosCarrito, $producto);
                 $_SESSION['productosCarrito'] = $productosCarrito;
             }
+            //}
             
         } elseif ($accion == "quitar") {
             $producto = $this->consultarPorId($id);
+            foreach ($productosCarrito as $clave => $elemento) { 
+                if ($elemento->idProducto == $id) { // Verificamos si existe 
+                    $indice = $clave;
+                    unset($productosCarrito[$indice]);
+                    $productosCarrito = array_values($productosCarrito); // reorganizamos los índices
+                    $_SESSION['productosCarrito'] = $productosCarrito;
+                }    
+            }
+
+            // Consultamos las tallas y stock disponibles de ese producto
+            /* include_once 'models/inventariomodel.php';
+            include_once 'models/tallamodel.php';
+            $inventario = new InventarioModel();
+            $inventarios = [];
+            $inventarios = $inventario->consultarPorIdProducto($id);
+            $tallasDisponibles = [];
+            foreach ($inventarios as $inventario) {
+                if (isset($inventario->talla->idTalla) && $inventario->stock > 0) {
+                    array_push($tallasDisponibles, $inventario->talla->idTalla);
+                }
+            }
+            $producto->tallasDisponibles = $tallasDisponibles; // agregamos las tallas
+            $producto->unidades = $unidades; // agregamos las unidades
+
             if (in_array($producto, $productosCarrito)) { // Verificamos si existe en el array carrito
                 $indice = array_search($producto, $productosCarrito);
                 unset($productosCarrito[$indice]);
                 $productosCarrito = array_values($productosCarrito); // reorganizamos los índices
                 $_SESSION['productosCarrito'] = $productosCarrito;
-            }
+            } */
+        } elseif ($accion == "modificar") {
+            $producto = $this->consultarPorId($id);
+            foreach ($productosCarrito as $clave => $elemento) { 
+                if ($elemento->idProducto == $id) { // Verificamos si existe 
+                    //$indice = $clave;
+                    $elemento->unidades = $unidades;
+                    $elemento->talla = $talla; 
+                    $_SESSION['productosCarrito'] = $productosCarrito;
+                }    
+            } 
         }
              
         $data = [
@@ -177,6 +215,7 @@ class ProductoModel extends Model /* implements Serializable */ {
         //$data['encodedBase64'] = $encodedBase64; // Data codificada a base 64
         //array_push($data, $encodedArray);
         //$data = array_values($data);
+
 
         $_SESSION['datosCompra'] = $data; // ESTO 
 
