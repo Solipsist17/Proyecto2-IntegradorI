@@ -36,7 +36,7 @@
 
         <div id="seleccionContainer" class="seleccion-container">
           
-            <div class="producto-seleccion"> 
+            <!-- <div class="producto-seleccion"> 
                 <p id="nombreProducto">Lorem, ipsum dolor.</p>
                 <div class="imagen-seleccion">
                 <img data-id="1" src="" id="imgSeleccionada" class="producto-miniatura" alt="">
@@ -56,9 +56,6 @@
                         <option>L</option>
                     </select>
                 </div>
-                <!-- <div class="producto-eliminar">
-                <img src="<?php echo constant('URL')?>public/img/eliminar.png" onclick="quitarCarrito(this)" alt="">
-                </div> -->
                 <p class="precio-unitario">S/50.00</p>
             </div>
             <div class="producto-seleccion"> 
@@ -81,9 +78,6 @@
                         <option>L</option>
                     </select>
                 </div>
-                <!-- <div class="producto-eliminar">
-                <img src="<?php echo constant('URL')?>public/img/eliminar.png" onclick="quitarCarrito(this)" alt="">
-                </div> -->
                 <p class="precio-unitario">S/50.00</p>
             </div>
             <div class="producto-seleccion"> 
@@ -106,11 +100,8 @@
                         <option>L</option>
                     </select>
                 </div>
-                <!-- <div class="producto-eliminar">
-                <img src="<?php echo constant('URL')?>public/img/eliminar.png" onclick="quitarCarrito(this)" alt="">
-                </div> -->
                 <p class="precio-unitario">S/50.00</p>
-            </div>
+            </div> -->
 
         </div>
         
@@ -161,7 +152,7 @@
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
-                            value: <?= $_SESSION['datosCompra']['subtotal']?>
+                            value: <?= $_SESSION['datosCompra']['subtotal'] + 20?>
                         }
                     }]
                 });
